@@ -48,7 +48,7 @@ const SuccessStories = () => {
           </div>
           
           {/* Navigation Buttons */}
-          <div className="flex gap-3 self-end sm:self-auto">
+          <div className="flex gap-3 justify-end sm:self-auto">
             <button
               onClick={prevSlide}
               className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#1d428c] text-white flex items-center justify-center transition-all hover:opacity-90 active:scale-95"

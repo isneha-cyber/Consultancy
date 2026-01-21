@@ -154,19 +154,19 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="text-white font-medium hover:underline transition-all duration-300"
                 >
-                  S.A.I.T Solution Nepal
+                  S.A I.T Solution Nepal
                 </a>
               </div>
             </div>
 
             {/* Scroll to Top Button */}
-            <button
+            {/* <button
               className="bg-white text-[#1d428c] hover:bg-blue-700 hover:text-white p-3 rounded-full transition-all duration-300 hover:rotate-45 hover:scale-110 transform shadow-lg hover:shadow-xl order-3"
               aria-label="Scroll to top"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               <ArrowUpRight size={20} />
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
