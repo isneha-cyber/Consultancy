@@ -11,7 +11,7 @@ const AlbatrossLogo = ({ className }) => (
 const AboutHero = () => {
   return (
     <section className="py-6 sm:py-8 md:py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className=" px-4 sm:px-6 lg:px-24">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 lg:gap-12 xl:gap-20">
 
           {/* Image Section */}
@@ -35,7 +35,7 @@ const AboutHero = () => {
                 </div>
                 <div className="flex-1">
                   <h1 className="text-2xl sm:text-3xl md:text-4xl font-normal leading-tight text-center sm:text-left">
-                    <span className="block mb-1">Explore Edwise:</span>
+                    <span className="block mb-1">Explore Albatross Insights </span>
                     <span className="font-bold relative inline-block mb-1">
                       Who We
                       <img
@@ -57,10 +57,12 @@ const AboutHero = () => {
                 <button className="w-full sm:w-auto bg-[#1d438d] text-white py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg text-sm sm:text-base font-medium hover:bg-[#163675] transition duration-300 border border-[#1d438d]">
                   Book Consultation
                 </button>
-                <button className="w-full sm:w-auto border border-[#1d438d] text-[#1d438d] py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg text-sm sm:text-base font-medium hover:bg-[#1d438d] hover:text-white transition duration-300 flex items-center justify-center gap-2">
-                  Register
-                </button>
+               
               </div>
+              <button className="w-full  mt-4 sm:w-auto border border-[#1d438d] text-[#1d438d] py-3 px-4 sm:px-6 rounded-lg text-base lg:text-lg font-medium hover:bg-[#1d438d] hover:text-white transition duration-300 flex items-center justify-center gap-2">
+                                   Register for Russia Education Fair 2026
+
+                </button>
             </div>
 
             {/* ── Desktop Layout (hidden below lg) ── */}
@@ -72,7 +74,7 @@ const AboutHero = () => {
 
               <div className="mb-4 lg:mb-6">
                 <h1 className="text-4xl xl:text-5xl font-normal leading-tight">
-                  <span className="block mb-2 xl:mb-3">Explore Edwise:</span>
+                  <span className="block mb-2 xl:mb-3">Explore Albatross Insights </span>
                    <span className=" mt-1 pe-4">Who</span>
                   <span className="font-bold relative inline-block mb-1">
                      We
@@ -94,10 +96,12 @@ const AboutHero = () => {
                 <button className="bg-[#1d438d] text-white py-3 px-6 rounded-lg text-base lg:text-lg font-medium hover:bg-[#163675] transition duration-300 border border-[#1d438d]">
                   Book Consultation
                 </button>
-                <button className="border border-[#1d438d] text-[#1d438d] py-3 px-6 rounded-lg text-base lg:text-lg font-medium hover:bg-[#1d438d] hover:text-white transition duration-300 flex items-center justify-center gap-2">
-                  Register
-                </button>
+                
               </div>
+              <button className="w-full  mt-4 sm:w-auto border border-[#1d438d] text-[#1d438d] py-3 px-4 sm:px-6 rounded-lg text-base lg:text-lg font-medium hover:bg-[#1d438d] hover:text-white transition duration-300 flex items-center justify-center gap-2">
+                                   Register for Russia Education Fair 2026
+
+                </button>
             </div>
 
           </div>

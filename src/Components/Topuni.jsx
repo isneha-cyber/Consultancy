@@ -23,7 +23,7 @@ const Topuni = () => {
 
   return (
     <>
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-8 sm:py-12 md:py-16 lg:py-24 text-center">
+      <div className=" px-3 sm:px-24 py-8 sm:py-12 md:py-16 lg:py-24 text-center">
         {/* Title Section */}
         <h2 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 sm:mb-6 px-2'>
           Russia's 

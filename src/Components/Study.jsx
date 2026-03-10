@@ -57,32 +57,7 @@ const reasons = [
   },
 ];
 
-const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
-
-const chevronSvg = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 256 256'%3E%3Cpath d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z' fill='%231d438d'/%3E%3C/svg%3E")`;
-
 export default function Study() {
-  const [form, setForm] = useState({
-    name: "", email: "", mobile: "", course: "", month: "", year: "", consent: true,
-  });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setForm((f) => ({ ...f, [name]: type === "checkbox" ? checked : value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
-
-  const selectStyle = {
-    backgroundImage: chevronSvg,
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "right 12px center",
-  };
-
   return (
     <section className="py-12 md:py-16 bg-white" style={{ fontFamily: "'Poppins', sans-serif" }}>
       <div className="px-4 sm:px-8 lg:px-16 xl:px-24">
@@ -131,95 +106,16 @@ export default function Study() {
             </ul>
           </div>
 
-          {/* RIGHT — Form card */}
-          <div className="w-full lg:w-[36%] lg:sticky lg:top-8 mt-4 lg:mt-0">
-            <div className="rounded-2xl border border-[#ccdcee] p-6 sm:p-8 bg-white"
+          {/* RIGHT — Image */}
+          <div className="w-full lg:w-[52%] lg:sticky lg:top-8 mt-4 lg:mt-32">
+            <div className="rounded-xl overflow-hidden border border-[#ccdcee]"
               style={{ boxShadow: "0 4px 24px rgba(29,67,141,0.10)" }}>
-
-              <h4 className="text-[#231f20] font-bold text-base sm:text-lg mb-6 leading-snug">
-                Book your Free Consultation with Trustworthy Counsellors
-              </h4>
-
-              {submitted ? (
-                <div className="text-center py-10">
-                  <div className="w-16 h-16 rounded-full bg-[#e8edf7] flex items-center justify-center mx-auto mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" fill="#1d438d">
-                      <path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/>
-                    </svg>
-                  </div>
-                  <p className="text-[#1d438d] font-semibold text-base">Thank you! We'll be in touch soon.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-
-                  {[
-                    { name: "name", placeholder: "Name", type: "text" },
-                    { name: "email", placeholder: "Email", type: "email" },
-                    { name: "mobile", placeholder: "Mobile Number", type: "tel" },
-                    { name: "course", placeholder: "Preferred Course", type: "text" },
-                  ].map((f) => (
-                    <input
-                      key={f.name}
-                      type={f.type}
-                      name={f.name}
-                      placeholder={f.placeholder}
-                      value={form[f.name]}
-                      onChange={handleChange}
-                      required
-                      className="w-full h-[48px] px-4 border border-[#bfd0e3] rounded-lg text-sm sm:text-base text-[#231f20] placeholder-gray-400 focus:outline-none focus:border-[#1d438d] focus:ring-1 focus:ring-[#1d438d] transition bg-white"
-                    />
-                  ))}
-
-                  <select
-                    name="month"
-                    value={form.month}
-                    onChange={handleChange}
-                    required
-                    style={selectStyle}
-                    className="w-full h-[48px] px-4 border border-[#bfd0e3] rounded-lg text-sm sm:text-base text-gray-400 bg-white focus:outline-none focus:border-[#1d438d] focus:ring-1 focus:ring-[#1d438d] transition appearance-none"
-                  >
-                    <option value="">Select Month</option>
-                    {months.map((m) => <option key={m} value={m}>{m}</option>)}
-                  </select>
-
-                  <select
-                    name="year"
-                    value={form.year}
-                    onChange={handleChange}
-                    required
-                    style={selectStyle}
-                    className="w-full h-[48px] px-4 border border-[#bfd0e3] rounded-lg text-sm sm:text-base text-gray-400 bg-white focus:outline-none focus:border-[#1d438d] focus:ring-1 focus:ring-[#1d438d] transition appearance-none"
-                  >
-                    <option value="">Select Year</option>
-                    <option value="2026">2026</option>
-                    <option value="2027">2027</option>
-                  </select>
-
-                  <label className="flex items-start gap-2.5 cursor-pointer mt-1">
-                    <input
-                      type="checkbox"
-                      name="consent"
-                      checked={form.consent}
-                      onChange={handleChange}
-                      required
-                      className="mt-0.5 w-4 h-4 accent-[#1d438d] flex-shrink-0"
-                    />
-                    <span className="text-xs sm:text-sm text-[#5b7ab5] leading-relaxed">
-                      I consent to receiving Calls, WhatsApp, Email and Google RCS from Edwise to assist with this enquiry.
-                    </span>
-                  </label>
-
-                  <div className="mt-2">
-                    <button
-                      type="submit"
-                      className="px-8 h-[46px] border-2 border-[#1d438d] text-[#1d438d] hover:bg-[#1d438d] hover:text-white text-sm sm:text-base font-semibold rounded-lg transition-colors duration-200"
-                    >
-                      Submit
-                    </button>
-                  </div>
-
-                </form>
-              )}
+              <img
+                src="/images/hero2.avif"
+                alt="Study in Russia"
+                className="w-full h-full object-cover"
+                style={{ minHeight: "580px", maxHeight: "920px" }}
+              />
             </div>
           </div>
 

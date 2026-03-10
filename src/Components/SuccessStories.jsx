@@ -8,7 +8,7 @@ const SuccessStories = () => {
     {
       id: 1,
       image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=500&h=600&fit=crop",
-      quote: "Choosing Edwise was a game changer when I decided to study abroad. The staff and my counselor were super friendly and every step became seamless.",
+      quote: "Choosing Albatross Insights was a game changer when I decided to study abroad. The staff and my counselor were super friendly and every step became seamless.",
       name: "Vaibhavee Modi",
       institution: "Confederation College, Canada",
       avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
@@ -17,7 +17,7 @@ const SuccessStories = () => {
     {
       id: 2,
       image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&h=600&fit=crop",
-      quote: "Edwise managed my entire journey to Australia, from university selection to visa and flights! I highly recommend Edwise for anyone wanting to study abroad.",
+      quote: "Albatross Insights managed my entire journey to Australia, from university selection to visa and flights! I highly recommend Albatross Insights for anyone wanting to study abroad.",
       name: "Bhumika",
       institution: "University of Adelaide, Australia",
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
@@ -29,7 +29,7 @@ const SuccessStories = () => {
   const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + stories.length) % stories.length);
 
   return (
-    <div className="bg-[#c6d3e3] py-10 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 rounded-3xl">
+    <div className="bg-[#e8edf4] py-10 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 rounded-[3rem]">
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}

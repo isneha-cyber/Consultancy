@@ -181,7 +181,7 @@ const Navbar = () => {
           transition: 'box-shadow 0.3s ease',
         }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+        <div className=" px-4 sm:px-6 lg:px-24 ">
           <div className="flex items-center justify-between" style={{ height: 64 }}>
 
             {/* Logo */}
@@ -361,7 +361,7 @@ const Navbar = () => {
           <div className="px-4 py-4 border-t border-[#edf2f7] flex flex-col gap-2.5">
             <a href="/contact" onClick={() => setIsMobileOpen(false)}>
               <button
-                className="cta-shimmer w-full flex items-center justify-center gap-2 font-semibold rounded-2rem sm:rounded-3xl  shadow-sm transition-colors duration-300"
+                className="cta-shimmer w-full flex items-center justify-center gap-2 font-semibold rounded-lg sm:rounded-3xl  shadow-sm transition-colors duration-300"
                 style={{ background: '#1d438d', color: 'white', fontSize: 14, padding: '12px', border: 'none', cursor: 'pointer' }}
                 onMouseEnter={e => e.currentTarget.style.background = '#163675'}
                 onMouseLeave={e => e.currentTarget.style.background = '#1d438d'}

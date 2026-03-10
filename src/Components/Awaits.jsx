@@ -153,9 +153,11 @@ const Awaits = () => {
             </p>
 
             <div className="pt-2">
+              <a href="/contact">
               <button className="inline-flex items-center justify-center bg-white text-[#1d428c] font-semibold text-sm px-9 py-2.5 rounded-lg sm:rounded-xl hover:shadow-lg hover:scale-[1.02] transition-all duration-200 active:scale-95">
                 Apply Now
               </button>
+              </a>
             </div>
           </div>
 

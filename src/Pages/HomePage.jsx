@@ -9,18 +9,23 @@ import SuccessStories from '../Components/SuccessStories'
 import Courses from '../Components/Courses'
 import Reach from '../Components/Reach'
 import FAQAccordion from '../Components/Faqs'
+import Introduction from '../Components/Introduction'
+import Compilance from '../Components/Compilance'
 
 const HomePage = () => {
   return (
     <>
     <Hero/>
+    <Introduction/>
 		<StatsBanner/>
 		<Topuni/>
 		<Steps/>
+    
 		 <Awaits/>
     <Counselor/>
   <SuccessStories/>
     <Courses/>
+    <Compilance/>
     <Reach/>
     <FAQAccordion/>
     </>

@@ -79,7 +79,7 @@ export default function Counselor() {
 
   return (
     <section className="bg-gray-50 py-12 sm:py-16 lg:py-24 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className=" px-4 sm:px-6 lg:px-24">
         <div className="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12 xl:gap-16">
 
           {/* ── LEFT: Text ───────────────────────────────────────────────── */}
@@ -98,7 +98,7 @@ export default function Counselor() {
             </h2>
 
             <p className="text-gray-600 text-base sm:text-lg leading-relaxed max-w-lg">
-              Edwise, study abroad consultants, have been the architects of dreams and shapers of destinies for aspiring students for over three decades.
+              Albatross Insights , study abroad consultants, have been the architects of dreams and shapers of destinies for aspiring students for over three decades.
             </p>
 
             <button className="border-2 border-[#1e3a8a] text-[#1e3a8a] px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-medium hover:bg-[#1e3a8a] hover:text-white transition-all duration-300 text-sm sm:text-base">

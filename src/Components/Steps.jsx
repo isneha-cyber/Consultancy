@@ -6,37 +6,43 @@ const Steps = () => {
       id: 1,
       title: "Academic Consultation & Assessment",
       description: "We begin with a thorough one-on-one assessment of your academic background, career goals, and budget. Our Russia specialists help you understand which programs and universities align best with your profile.",
-      stickyTop: "top-10"
+      stickyTop: "top-10",
+      bg:'bg-red-50'
     },
     {
       id: 2,
       title: "University Shortlisting",
       description: "Based on your assessment, we curate a personalised list of Russian universities that match your academic qualifications, preferred city, course, and financial plan — ensuring the best possible fit.",
-      stickyTop: "top-16"
+      stickyTop: "top-16",
+      bg:'bg-green-50'
     },
     {
       id: 3,
       title: "Admission Processing & Offer Confirmation",
       description: "Our team manages the entire application process — from document preparation and submission to follow-ups with the university — until you receive your official admission offer letter.",
-      stickyTop: "top-24"
+      stickyTop: "top-24",
+      bg:'bg-yellow-50'
     },
     {
       id: 4,
       title: "Documentation Structuring",
       description: "We assist in structuring and verifying all required documents including transcripts, SOP, recommendation letters, and medical certificates to meet Russian university and embassy standards.",
-      stickyTop: "top-32"
+      stickyTop: "top-32",
+      bg:'bg-blue-50'
     },
     {
       id: 5,
       title: "Visa Application & Approval",
       description: "Our dedicated visa team guides you through the Russian student visa application with a 99% success rate — handling every form, checklist, and appointment to ensure a smooth and timely approval.",
-      stickyTop: "top-40"
+      stickyTop: "top-40",
+      bg:'bg-purple-50'
     },
     {
       id: 6,
       title: "Pre-Departure Orientation",
       description: "Before you fly, we equip you with everything you need — accommodation arrangements, travel guidance, cultural orientation, banking tips, and a full Russia student survival briefing.",
-      stickyTop: "top-48"
+      stickyTop: "top-",
+      bg:'bg-pink-50'
     }
   ];
 
@@ -49,7 +55,7 @@ const Steps = () => {
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
               <span className="relative inline-block px-2">
-                Steps
+                Student
                 <img
                   src="/images/underline.png"
                   alt=""
@@ -57,7 +63,7 @@ const Steps = () => {
                 />
               </span>
               <span className="block sm:inline sm:ml-2 mt-2 sm:mt-0">
-                To Your Dream Destination
+                Process Flow
               </span>
             </h2>
             <p className="mt-6 text-gray-500 text-base sm:text-lg max-w-2xl mx-auto">
@@ -76,8 +82,8 @@ const Steps = () => {
                   className={`sticky ${step.stickyTop} transition-all duration-300`}
                 >
                   <div
-                    className="rounded-2xl sm:rounded-3xl p-6 sm:p-8 duration-300"
-                    style={{ backgroundColor: '#e8edf4' }}
+                    className={`rounded-2xl sm:rounded-3xl p-6 sm:p-8 duration-300 ${step.bg} transition-all `}
+                    // style={{ backgroundColor: '#e8edf4' }}
                   >
 
                     {/* Step Badge + Title Row */}
@@ -96,9 +102,7 @@ const Steps = () => {
                     </p>
 
                     {/* CTA */}
-                    <button className="bg-[#1d428c] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-[#152f63] transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-                      Free Expert Consultation
-                    </button>
+                   
                   </div>
                 </div>
               ))}

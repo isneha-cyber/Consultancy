@@ -11,7 +11,7 @@ const AlbatrossLogo = ({ className }) => (
 const ServiceHero = () => {
   return (
     <section className="py-8 sm:py-10 md:py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className=" px-4 sm:px-6 lg:px-24">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 xl:gap-20">
 
           {/* Image — top on mobile, right on desktop */}
@@ -58,10 +58,12 @@ const ServiceHero = () => {
               <button className="w-full sm:w-auto bg-[#1d438d] text-white py-2.5 sm:py-3 px-6 rounded-xl text-sm sm:text-base lg:text-lg font-medium hover:bg-[#163675] transition duration-300 border border-[#1d438d]">
                 Book Consultation
               </button>
-              <button className="w-full sm:w-auto border border-[#1d438d] text-[#1d438d] py-2.5 sm:py-3 px-6 rounded-xl text-sm sm:text-base lg:text-lg font-medium hover:bg-[#1d438d] hover:text-white transition duration-300 flex items-center justify-center gap-2">
-                Register
-              </button>
+              
             </div>
+            <button className="w-full  mt-4 sm:w-auto border border-[#1d438d] text-[#1d438d] py-3 px-4 sm:px-6 rounded-lg text-base lg:text-lg font-medium hover:bg-[#1d438d] hover:text-white transition duration-300 flex items-center justify-center gap-2">
+                                   Register for Russia Education Fair 2026
+
+                </button>
 
           </div>
         </div>

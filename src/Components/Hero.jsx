@@ -11,15 +11,15 @@ const AlbatrossLogo = ({ className }) => (
 const Hero = () => {
   return (
     <section className="py-6 sm:py-8 md:py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-24">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 lg:gap-12 xl:gap-20">
 
           {/* Image Section */}
-          <div className="w-full lg:w-1/2 flex justify-center order-first lg:order-last">
+          <div className="w-full lg:w-1/2 flex justify-center order-first lg:order-last ">
             <img
               src="/images/hero.webp"
               alt="Albatross Expert Consultation"
-              className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-full h-auto object-contain rounded-lg"
+              className="w-full max-w-sm sm:max-w-sm md:max-w-md lg:max-w-full h-auto object-contain rounded-lg"
               loading="lazy"
             />
           </div>
@@ -37,7 +37,7 @@ const Hero = () => {
 
                 <div className="flex-1">
                   <h1 className="text-2xl sm:text-3xl md:text-4xl font-normal leading-tight text-center sm:text-left">
-                    <span className="block mb-1 sm:mb-2 md:mb-3">Bringing Nepal to</span>
+                    <span className="block mb-1 sm:mb-2 md:mb-3">Bridging Nepal to</span>
                     <span className="relative inline-block mb-3 sm:mb-4 font-bold">
                       Global Academic
                       <img
@@ -59,10 +59,11 @@ const Hero = () => {
                 <button className="w-full sm:w-auto bg-[#1d438d] text-white py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg text-sm sm:text-base font-medium hover:bg-[#163675] transition duration-300 border border-[#1d438d]">
                   Book Consultation
                 </button>
-                <button className="w-full sm:w-auto border border-[#1d438d] text-[#1d438d] py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg text-sm sm:text-base font-medium hover:bg-[#1d438d] hover:text-white transition duration-300 flex items-center justify-center gap-2">
-                  Register
-                </button>
+                
               </div>
+              <button className="w-full mt-4 sm:w-auto border border-[#1d438d] text-[#1d438d] py-3 px-4 sm:px-6 rounded-lg text-base lg:text-lg font-medium hover:bg-[#1d438d] hover:text-white transition duration-300 flex items-center justify-center gap-2">
+                  Register for Russia Education Fair 2026
+                </button>
             </div>
 
             {/* ── Desktop Layout (hidden below lg) ── */}
@@ -74,7 +75,7 @@ const Hero = () => {
 
               <div className="mb-4 lg:mb-6">
                 <h1 className="text-4xl lg:text-4xl xl:text-5xl font-normal leading-tight">
-                  <span className="block mb-2 xl:mb-3">Bringing Nepal to</span>
+                  <span className="block mb-2 xl:mb-3">Bridging Nepal to</span>
                   <span className="relative inline-block mb-4 xl:mb-5 font-bold">
                     Global Academic
                     <img
@@ -95,10 +96,11 @@ const Hero = () => {
                 <button className="w-full sm:w-auto bg-[#1d438d] text-white py-3 px-4 sm:px-6 rounded-lg text-base lg:text-lg font-medium hover:bg-[#163675] transition duration-300 border border-[#1d438d]">
                   Book Consultation
                 </button>
-                <button className="w-full sm:w-auto border border-[#1d438d] text-[#1d438d] py-3 px-4 sm:px-6 rounded-lg text-base lg:text-lg font-medium hover:bg-[#1d438d] hover:text-white transition duration-300 flex items-center justify-center gap-2">
-                  Register 
-                </button>
+                
               </div>
+              <button className="w-full mt-4 sm:w-auto border border-[#1d438d] text-[#1d438d] py-3 px-4 sm:px-6 rounded-lg text-base lg:text-lg font-medium hover:bg-[#1d438d] hover:text-white transition duration-300 flex items-center justify-center gap-2">
+                  Register for Russia Education Fair 2026
+                </button>
             </div>
 
           </div>

@@ -99,19 +99,7 @@ export default function UniversityPartnerships() {
         </div>
       </div>
 
-      {/* ── Stats Bar ── */}
-      <div className="bg-[#f4f7fc] border-b border-[#dde6f3]">
-        <div className="px-4 sm:px-8 lg:px-16 xl:px-24">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#dde6f3]">
-            {stats.map((s, i) => (
-              <div key={i} className="py-5 sm:py-7 px-3 sm:px-6 text-center">
-                <p className="text-xl sm:text-2xl md:text-3xl font-bold text-[#1d438d] mb-1">{s.value}</p>
-                <p className="text-xs sm:text-sm text-gray-500 font-medium">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      
 
       {/* ── Main Content ── */}
       <div className="px-4 sm:px-8 lg:px-16 xl:px-24 pt-10 sm:pt-14 md:pt-20 pb-16 sm:pb-20">
