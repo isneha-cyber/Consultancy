@@ -11,6 +11,7 @@ import StudyInRussia from './Pages/StudyInRussia'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Service from './Pages/Service'
 import About from './Pages/About'
+import ContactPage from './Pages/ContactPage'
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
 <Route path="/study-in-russia" element={<StudyInRussia/>} />
 <Route path="/service" element={<Service/>} />
 <Route path="/about" element={<About/>} />
+<Route path="/contact" element={<ContactPage/>} />
 
 
     </Routes>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const features = [
   {
@@ -53,6 +53,8 @@ const stats = [
 export default function UniversityPartnerships() {
   const [form, setForm] = useState({ university: "", name: "", email: "", phone: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const sliderRef = useRef(null);
 
   const handleChange = (e) => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -63,27 +65,35 @@ export default function UniversityPartnerships() {
     setSubmitted(true);
   };
 
+  const handleScroll = () => {
+    if (!sliderRef.current) return;
+    const { scrollLeft, offsetWidth } = sliderRef.current;
+    setActiveSlide(Math.round(scrollLeft / offsetWidth));
+  };
+
+  const scrollTo = (index) => {
+    if (!sliderRef.current) return;
+    sliderRef.current.scrollTo({ left: index * sliderRef.current.offsetWidth, behavior: "smooth" });
+    setActiveSlide(index);
+  };
+
   return (
-    <section
-      className="bg-white"
-      style={{ fontFamily: "'Poppins', sans-serif" }}
-    >
+    <section className="bg-white" style={{ fontFamily: "'Poppins', sans-serif" }}>
+
       {/* ── Hero Banner ── */}
       <div className="relative bg-[#1d438d] overflow-hidden">
-        {/* Decorative circles */}
         <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-white opacity-[0.04]" />
         <div className="absolute -bottom-10 -left-10 w-60 h-60 rounded-full bg-white opacity-[0.04]" />
         <div className="absolute top-1/2 right-1/4 w-40 h-40 rounded-full bg-white opacity-[0.03]" />
 
-        <div className="relative px-4 sm:px-8 lg:px-16 xl:px-24 py-16 sm:py-20 md:py-24">
+        <div className="relative px-4 sm:px-8 lg:px-16 xl:px-24 py-12 sm:py-16 md:py-24">
           <div className="max-w-3xl">
-           
-            <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-white leading-tight mb-5">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-white leading-tight mb-4 sm:mb-5">
               University
               <span className="block text-blue-200">Partnerships</span>
             </h1>
-            <p className="text-blue-100 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl">
-              We offer structured collaboration models for Russian universities seeking long-term engagement within South Asia — built on transparency, reach, and results.
+            <p className="text-blue-100 text-sm sm:text-base md:text-xl leading-relaxed max-w-2xl">
+              We offer structured collaboration models for universities seeking long-term student recruitment engagement within South Asia. Our partnerships built on transparency, reach, and results.
             </p>
           </div>
         </div>
@@ -94,8 +104,8 @@ export default function UniversityPartnerships() {
         <div className="px-4 sm:px-8 lg:px-16 xl:px-24">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[#dde6f3]">
             {stats.map((s, i) => (
-              <div key={i} className="py-7 sm:py-8 px-4 sm:px-6 text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-[#1d438d] mb-1">{s.value}</p>
+              <div key={i} className="py-5 sm:py-7 px-3 sm:px-6 text-center">
+                <p className="text-xl sm:text-2xl md:text-3xl font-bold text-[#1d438d] mb-1">{s.value}</p>
                 <p className="text-xs sm:text-sm text-gray-500 font-medium">{s.label}</p>
               </div>
             ))}
@@ -104,40 +114,92 @@ export default function UniversityPartnerships() {
       </div>
 
       {/* ── Main Content ── */}
-      <div className="px-4 sm:px-8 lg:px-16 xl:px-24 pt-14 sm:pt-18 md:pt-20">
+      <div className="px-4 sm:px-8 lg:px-16 xl:px-24 pt-10 sm:pt-14 md:pt-20 pb-16 sm:pb-20">
 
         {/* Section intro */}
-        <div className="max-w-2xl mb-14">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#231f20] mb-4 leading-tight">
+        <div className="max-w-2xl mb-8 sm:mb-12 md:mb-14">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#231f20] mb-3 sm:mb-4 leading-tight">
             Our Collaboration
             <span className="relative ml-2 inline-block text-[#1d438d]">
               Framework
               <img src="/images/underline.png" alt="" className="w-full h-[6px] md:h-[8px] mt-1 block" />
             </span>
           </h2>
-          <p className="text-gray-500 text-base sm:text-lg leading-relaxed">
+          <p className="text-gray-500 text-sm sm:text-base md:text-lg leading-relaxed">
             Four pillars that make our university partnerships effective, transparent, and built for long-term success across the South Asian market.
           </p>
         </div>
 
-        {/* Feature cards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 xl:gap-8 mb-20">
+        {/* ── MOBILE SLIDER (hidden on sm+) ── */}
+        <div className="sm:hidden">
+          <div
+            ref={sliderRef}
+            onScroll={handleScroll}
+            className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {features.map((f, i) => (
+              <div
+                key={i}
+                className="flex-shrink-0 w-[85vw] snap-center relative bg-white rounded-2xl border border-[#e0eaf6] p-6 overflow-hidden"
+                style={{ boxShadow: "0 4px 20px rgba(29,67,141,0.09)" }}
+              >
+                {/* Watermark number */}
+                <span className="absolute top-3 right-4 text-7xl font-black text-[#1d438d] opacity-[0.04] select-none leading-none">
+                  {f.number}
+                </span>
+
+                {/* Icon */}
+                <div className="w-12 h-12 rounded-xl bg-[#eaf0f8] text-[#1d438d] flex items-center justify-center mb-4">
+                  {f.icon}
+                </div>
+
+                {/* Number pill */}
+                <span className="inline-block text-xs font-bold tracking-widest text-[#1d438d] bg-[#eaf0f8] px-2.5 py-1 rounded-full mb-3">
+                  {f.number}
+                </span>
+
+                <h3 className="text-[#231f20] font-bold text-lg mb-2 leading-snug">
+                  {f.title}
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  {f.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Dot indicators */}
+          <div className="flex justify-center gap-2 mt-4">
+            {features.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => scrollTo(i)}
+                className={`rounded-full transition-all duration-300 ${
+                  activeSlide === i
+                    ? "w-6 h-2 bg-[#1d438d]"
+                    : "w-2 h-2 bg-[#bfd0e3]"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* ── DESKTOP GRID (hidden below sm) ── */}
+        <div className="hidden sm:grid grid-cols-2 gap-6 xl:gap-8">
           {features.map((f, i) => (
             <div
               key={i}
               className="group relative bg-white rounded-2xl border border-[#e0eaf6] p-7 sm:p-8 hover:border-[#1d438d] hover:shadow-[0_8px_32px_rgba(29,67,141,0.12)] transition-all duration-300 overflow-hidden"
             >
-              {/* Background number watermark */}
               <span className="absolute top-4 right-5 text-7xl font-black text-[#1d438d] opacity-[0.04] select-none leading-none">
                 {f.number}
               </span>
 
-              {/* Icon */}
               <div className="w-14 h-14 rounded-xl bg-[#eaf0f8] text-[#1d438d] flex items-center justify-center mb-5 group-hover:bg-[#1d438d] group-hover:text-white transition-colors duration-300">
                 {f.icon}
               </div>
 
-              {/* Number pill */}
               <span className="inline-block text-xs font-bold tracking-widest text-[#1d438d] bg-[#eaf0f8] px-2.5 py-1 rounded-full mb-3">
                 {f.number}
               </span>
@@ -152,120 +214,6 @@ export default function UniversityPartnerships() {
           ))}
         </div>
 
-        {/* ── Partnership Enquiry Form ── */}
-        {/* <div className="flex flex-col lg:flex-row gap-10 xl:gap-16 items-start">
-
-         
-          <div className="w-full lg:w-[45%]">
-            <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#1d438d] bg-[#eaf0f8] px-3 py-1.5 rounded-full mb-5">
-              Partner With Us
-            </span>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#231f20] leading-tight mb-5">
-              Ready to expand your reach in South Asia?
-            </h3>
-            <p className="text-gray-500 text-base sm:text-lg leading-relaxed mb-8">
-              Get in touch with our partnerships team. We'll discuss your institution's goals and design a collaboration model that delivers measurable recruitment outcomes.
-            </p>
-
-         
-            <ul className="flex flex-col gap-4">
-              {[
-                "Dedicated partnership manager assigned to your institution",
-                "Customised recruitment strategy for your target profile",
-                "Regular reporting on pipeline and enrollment metrics",
-                "Full compliance with institutional onboarding requirements",
-              ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-[#1d438d] flex items-center justify-center mt-0.5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 256 256" fill="white">
-                      <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/>
-                    </svg>
-                  </span>
-                  <span className="text-gray-600 text-sm sm:text-base leading-relaxed">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-        
-          <div className="w-full lg:w-[52%]">
-            <div
-              className="bg-white rounded-2xl border border-[#dde6f3] p-7 sm:p-8"
-              style={{ boxShadow: "0 4px 28px rgba(29,67,141,0.09)" }}
-            >
-              {submitted ? (
-                <div className="text-center py-12">
-                  <div className="w-20 h-20 rounded-full bg-[#eaf0f8] flex items-center justify-center mx-auto mb-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 256" fill="#1d438d">
-                      <path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/>
-                    </svg>
-                  </div>
-                  <h4 className="text-[#1d438d] font-bold text-xl mb-2">Enquiry Received!</h4>
-                  <p className="text-gray-500 text-base">Our partnerships team will be in touch within 2 business days.</p>
-                </div>
-              ) : (
-                <>
-                  <h4 className="text-[#231f20] font-bold text-lg sm:text-xl mb-6">Partnership Enquiry</h4>
-                  <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                    <input
-                      type="text"
-                      name="university"
-                      placeholder="University / Institution Name"
-                      value={form.university}
-                      onChange={handleChange}
-                      required
-                      className="w-full h-[50px] px-4 border border-[#c8d8ea] rounded-lg text-sm sm:text-base text-[#231f20] placeholder-gray-400 focus:outline-none focus:border-[#1d438d] focus:ring-1 focus:ring-[#1d438d] transition bg-white"
-                    />
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <input
-                        type="text"
-                        name="name"
-                        placeholder="Contact Person"
-                        value={form.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full h-[50px] px-4 border border-[#c8d8ea] rounded-lg text-sm sm:text-base text-[#231f20] placeholder-gray-400 focus:outline-none focus:border-[#1d438d] focus:ring-1 focus:ring-[#1d438d] transition bg-white"
-                      />
-                      <input
-                        type="tel"
-                        name="phone"
-                        placeholder="Phone Number"
-                        value={form.phone}
-                        onChange={handleChange}
-                        required
-                        className="w-full h-[50px] px-4 border border-[#c8d8ea] rounded-lg text-sm sm:text-base text-[#231f20] placeholder-gray-400 focus:outline-none focus:border-[#1d438d] focus:ring-1 focus:ring-[#1d438d] transition bg-white"
-                      />
-                    </div>
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="Official Email Address"
-                      value={form.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full h-[50px] px-4 border border-[#c8d8ea] rounded-lg text-sm sm:text-base text-[#231f20] placeholder-gray-400 focus:outline-none focus:border-[#1d438d] focus:ring-1 focus:ring-[#1d438d] transition bg-white"
-                    />
-                    <textarea
-                      name="message"
-                      placeholder="Tell us about your institution and recruitment goals..."
-                      value={form.message}
-                      onChange={handleChange}
-                      rows={4}
-                      className="w-full px-4 py-3 border border-[#c8d8ea] rounded-lg text-sm sm:text-base text-[#231f20] placeholder-gray-400 focus:outline-none focus:border-[#1d438d] focus:ring-1 focus:ring-[#1d438d] transition bg-white resize-none"
-                    />
-                    <button
-                      type="submit"
-                      className="w-full h-[52px] bg-[#1d438d] hover:bg-[#163675] text-white font-semibold text-sm sm:text-base rounded-lg transition-colors duration-300 mt-1"
-                    >
-                      Submit Partnership Enquiry
-                    </button>
-                  </form>
-                </>
-              )}
-            </div>
-          </div>
-
-        </div> */}
       </div>
     </section>
   );

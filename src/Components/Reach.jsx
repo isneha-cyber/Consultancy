@@ -30,175 +30,153 @@ export default function Reach() {
     alert('Form submitted successfully!');
   };
 
+  const inputCls = "w-full px-4 py-2.5 rounded-lg bg-transparent border-2 border-white/30 text-white placeholder-white/50 focus:border-white focus:outline-none transition-colors text-sm";
+  const selectCls = "w-full px-4 py-2.5 rounded-lg bg-[#1d428c] border-2 border-white/30 text-white focus:border-white focus:outline-none transition-colors appearance-none cursor-pointer text-sm";
+  const labelCls = "block text-white/80 text-xs sm:text-sm mb-1.5 font-medium";
+
   return (
-    <div className=" bg-[#1d428c] py-12 sm:py-24 sm:px-24 px-4">
+    <div className="bg-[#1d428c] py-10 sm:py-16 lg:py-20 px-4 sm:px-8 lg:px-16 xl:px-24">
      
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12  items-center">
-          {/* Image Section */}
-          <div className="max-w-2xl mx-autoflex justify-center t">
-            <div className="relative w-full max-w-5xl rounded-3xl overflow-hidden shadow-2xl">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+
+          {/* ── IMAGE ── */}
+          <div className="w-full">
+            <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
               <img
                 src="images/reach.webp"
                 alt="Graduates celebrating"
-                className="w-full h-[90vh] object-cover"
+                className="w-full object-cover h-[220px] sm:h-[320px] lg:h-[580px]"
               />
+              {/* subtle gradient overlay at bottom */}
+              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#1d428c]/40 to-transparent pointer-events-none" />
             </div>
           </div>
 
-          {/* Form Section */}
+          {/* ── FORM ── */}
           <div className="w-full">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 text-center lg:text-left">
-              Let <span className="relative inline-block mx-2 font-bold">Our Team
-                 <img 
-              src="/images/underline.png" 
-              alt="" 
-              className="absolute sm:-bottom-4 -bottom-2 left-0 w-full h-4"
-            /></span> Reach Out To You
-            </h1>
-
-            <div className="space-y-6">
-              {/* First and Last Name */}
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-white text-sm mb-2">First Name</label>
-                  <input
-                    type="text"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    className="w-full px-6 py-2 rounded-lg bg-transparent border-2 border-white/30 text-white placeholder-white/50 focus:border-white focus:outline-none transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="block text-white text-sm mb-2">Last Name</label>
-                  <input
-                    type="text"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    className="w-full px-6 py-2 rounded-lg bg-transparent border-2 border-white/30 text-white placeholder-white/50 focus:border-white focus:outline-none transition-colors"
-                  />
-                </div>
-              </div>
-
-              {/* Email and Mobile */}
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-white text-sm mb-2">Email ID</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-6 py-2 rounded-lg bg-transparent border-2 border-white/30 text-white placeholder-white/50 focus:border-white focus:outline-none transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="block text-white text-sm mb-2">Mobile Number</label>
-                  <input
-                    type="tel"
-                    name="mobile"
-                    value={formData.mobile}
-                    onChange={handleChange}
-                    className="w-full px-6 py-2 rounded-lg bg-transparent border-2 border-white/30 text-white placeholder-white/50 focus:border-white focus:outline-none transition-colors"
-                  />
-                </div>
-              </div>
-
-              {/* Destination and Course */}
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-white text-sm mb-2">Your preferred study destination</label>
-                  <input
-                    type="text"
-                    name="destination"
-                    value={formData.destination}
-                    onChange={handleChange}
-                    placeholder="Select Destination"
-                    className="w-full px-6 py-2 rounded-lg bg-transparent border-2 border-white/30 text-white placeholder-white/50 focus:border-white focus:outline-none transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="block text-white text-sm mb-2">Course</label>
-                  <input
-                    type="text"
-                    name="course"
-                    value={formData.course}
-                    onChange={handleChange}
-                    className="w-full px-6 py-2 rounded-lg bg-transparent border-2 border-white/30 text-white placeholder-white/50 focus:border-white focus:outline-none transition-colors"
-                  />
-                </div>
-              </div>
-
-              {/* Month and Year */}
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-white text-sm mb-2">When do you plan to study?</label>
-                  <select
-                    name="month"
-                    value={formData.month}
-                    onChange={handleChange}
-                    className="w-full px-6 py-2 rounded-lg  border-2 border-white/30 text-white focus:border-white focus:outline-none transition-colors appearance-none cursor-pointer"
-                  >
-                    <option value="">Select Month</option>
-                    <option value="January">January</option>
-                    <option value="February">February</option>
-                    <option value="March">March</option>
-                    <option value="April">April</option>
-                    <option value="May">May</option>
-                    <option value="June">June</option>
-                    <option value="July">July</option>
-                    <option value="August">August</option>
-                    <option value="September">September</option>
-                    <option value="October">October</option>
-                    <option value="November">November</option>
-                    <option value="December">December</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-white text-sm mb-2">Your preferred year</label>
-                  <select
-                    name="year"
-                    value={formData.year}
-                    onChange={handleChange}
-                    className="w-full px-6 py-2 rounded-lg  border-2 border-white/30 text-white focus:border-white focus:outline-none transition-colors appearance-none cursor-pointer"
-                  >
-                    <option value="">Select Year</option>
-                    <option value="2026">2026</option>
-                    <option value="2027">2027</option>
-                    <option value="2028">2028</option>
-                    <option value="2029">2029</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* Consent Checkbox */}
-              <div className="flex items-start gap-3">
-                <input
-                  type="checkbox"
-                  name="consent"
-                  checked={formData.consent}
-                  onChange={handleChange}
-                  className="mt-1 w-4 h-4 rounded border-2 border-white/30 bg-transparent cursor-pointer accent-white"
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-6 sm:mb-8 text-center lg:text-left leading-tight">
+              Let{' '}
+              <span className="relative inline-block">
+                Our Team
+                <img
+                  src="/images/underline.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute -bottom-1 sm:-bottom-2 left-0 w-full"
+                  style={{ height: '7px', objectFit: 'fill' }}
                 />
-                <label className="text-white text-sm leading-relaxed">
-                  I consent to receiving Calls, WhatsApp, Email and Google RCS from Edwise to assist with this enquiry.
-                </label>
+              </span>{' '}
+              Reach Out To You
+            </h2>
+
+            <div className="space-y-4">
+
+              {/* First / Last Name */}
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                <div>
+                  <label className={labelCls}>First Name</label>
+                  <input type="text" name="firstName" value={formData.firstName}
+                    onChange={handleChange} placeholder="John" className={inputCls} />
+                </div>
+                <div>
+                  <label className={labelCls}>Last Name</label>
+                  <input type="text" name="lastName" value={formData.lastName}
+                    onChange={handleChange} placeholder="Doe" className={inputCls} />
+                </div>
               </div>
 
-              {/* Submit Button */}
-              <div>
-                <button
-                  onClick={handleSubmit}
-                  className="cursor-pointer px-4 py-2 bg-transparent border-2 border-white text-white rounded-lg font-medium hover:bg-white hover:text-blue-900 transition-all duration-300 transform hover:scale-105"
-                >
-                  Submit
-                </button>
+              {/* Email / Mobile */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                <div>
+                  <label className={labelCls}>Email ID</label>
+                  <input type="email" name="email" value={formData.email}
+                    onChange={handleChange} placeholder="you@email.com" className={inputCls} />
+                </div>
+                <div>
+                  <label className={labelCls}>Mobile Number</label>
+                  <input type="tel" name="mobile" value={formData.mobile}
+                    onChange={handleChange} placeholder="+977 XXXXXXXXXX" className={inputCls} />
+                </div>
               </div>
+
+              {/* Destination / Course */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                <div>
+                  <label className={labelCls}>Preferred Study Destination</label>
+                  <input type="text" name="destination" value={formData.destination}
+                    onChange={handleChange} placeholder="e.g. Moscow" className={inputCls} />
+                </div>
+                <div>
+                  <label className={labelCls}>Course</label>
+                  <input type="text" name="course" value={formData.course}
+                    onChange={handleChange} placeholder="e.g. MBBS" className={inputCls} />
+                </div>
+              </div>
+
+              {/* Month / Year */}
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                <div>
+                  <label className={labelCls}>When do you plan to study?</label>
+                  <div className="relative">
+                    <select name="month" value={formData.month} onChange={handleChange} className={selectCls}>
+                      <option value="">Select Month</option>
+                      {['January','February','March','April','May','June',
+                        'July','August','September','October','November','December'].map(m => (
+                        <option key={m} value={m}>{m}</option>
+                      ))}
+                    </select>
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white/60">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <label className={labelCls}>Preferred Year</label>
+                  <div className="relative">
+                    <select name="year" value={formData.year} onChange={handleChange} className={selectCls}>
+                      <option value="">Select Year</option>
+                      {['2026','2027','2028','2029'].map(y => (
+                        <option key={y} value={y}>{y}</option>
+                      ))}
+                    </select>
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white/60">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Consent */}
+              <label className="flex items-start gap-3 cursor-pointer">
+                <div className="relative mt-0.5 flex-shrink-0">
+                  <input type="checkbox" name="consent" checked={formData.consent}
+                    onChange={handleChange} className="sr-only peer" />
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 rounded border-2 border-white/40 flex items-center justify-center transition-all peer-checked:bg-white peer-checked:border-white">
+                    {formData.consent && (
+                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 6l3 3 5-5" stroke="#1d428c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    )}
+                  </div>
+                </div>
+                <span className="text-white/80 text-xs sm:text-sm leading-relaxed">
+                  I consent to receiving Calls, WhatsApp, Email and SMS from Albatross Insights to assist with this enquiry.
+                </span>
+              </label>
+
+              {/* Submit */}
+              <button
+                onClick={handleSubmit}
+                className="w-full sm:w-auto px-8 py-2.5 sm:py-3 bg-transparent border-2 border-white text-white rounded-lg font-semibold text-sm sm:text-base hover:bg-white hover:text-[#1d428c] transition-all duration-300 hover:scale-[1.02]"
+              >
+                Submit Enquiry
+              </button>
+
             </div>
           </div>
+
         </div>
-   
+     
     </div>
   );
 }

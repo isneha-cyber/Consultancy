@@ -83,7 +83,7 @@ export default function Counselor() {
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
 
           {/* ── LEFT: Text ───────────────────────────────────────────────── */}
-          <div className="w-full lg:w-[38%] shrink-0 space-y-4 md:space-y-6 order-2 lg:order-1">
+          <div className="w-full lg:w-[38%] shrink-0 space-y-4 md:space-y-6 order-1">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-snug md:leading-tight">
               Your{' '}
               <span className="relative inline-block font-bold">
@@ -94,7 +94,7 @@ export default function Counselor() {
                   className="w-full h-2 md:h-3 mt-1"
                 />
               </span>{' '}
-              In<br />Global Education
+              In Global Education
             </h2>
 
             <p className="text-gray-600 text-base sm:text-lg leading-relaxed">

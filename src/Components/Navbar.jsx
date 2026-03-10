@@ -1,391 +1,392 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+const navLinks = [
+  { label: 'Home',            href: '/' },
+  { label: 'About',           href: '/about' },
+  { label: 'Services',        href: '/service' },
+  { label: 'Study in Russia', href: '/study-in-russia' },
+];
+
+const SOCIALS = [
+  { label: 'Facebook',  d: 'M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z' },
+  { label: 'Instagram', d: 'M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z' },
+  { label: 'LinkedIn',  d: 'M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24ZM96,176H72V104H96Zm-12-84a12,12,0,1,1,12-12A12,12,0,0,1,84,92Zm100,84H160V140c0-11-4-18-13-18a14.22,14.22,0,0,0-13,9.5,17.75,17.75,0,0,0-1,6.5v38H109V104h24v11.29C137,109,143.85,103,154,103c17,0,30,11,30,34.51Z' },
+];
+
+const PhoneIcon = ({ size = 12 }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 256 256" fill="currentColor">
+    <path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46Z"/>
+  </svg>
+);
+const MailIcon = ({ size = 10 }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 256 256" fill="currentColor">
+    <path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/>
+  </svg>
+);
+const ClockIcon = ({ size = 10 }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 256 256" fill="currentColor">
+    <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/>
+  </svg>
+);
+const PinIcon = ({ size = 10 }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 256 256" fill="currentColor">
+    <path d="M128,16a112,112,0,1,0,112,112A112.12,112.12,0,0,0,128,16Zm0,208a96,96,0,1,1,96-96A96.11,96.11,0,0,1,128,224Zm-8-80V104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180Z"/>
+  </svg>
+);
+
 const Navbar = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [hasShadow, setHasShadow] = useState(false);
-  
-  const dropdownRef = useRef(null);
-  const mobileDropdownRef = useRef(null);
-  const mobileMenuRef = useRef(null);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [scrolled,     setScrolled]     = useState(false);
+  const [activePath,   setActivePath]   = useState('/');
+  const mobileRef = useRef(null);
 
-  // Handle scroll shadow
   useEffect(() => {
-    const handleScroll = () => {
-      setHasShadow(window.scrollY > 10);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close dropdown when clicking outside (desktop)
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    if (typeof window !== 'undefined') setActivePath(window.location.pathname);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    
-    return () => {
-      document.body.style.overflow = 'unset';
+    document.body.style.overflow = isMobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isMobileOpen]);
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (mobileRef.current && !mobileRef.current.contains(e.target)) setIsMobileOpen(false);
     };
-  }, [isMobileMenuOpen]);
+    if (isMobileOpen) document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [isMobileOpen]);
 
-  // Toggle dropdown with smooth animation
-  const toggleDropdown = (e) => {
-    if (e) e.stopPropagation();
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
-  // Toggle mobile menu
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  // Handle mobile dropdown toggle
-  const handleMobileDropdownToggle = (e) => {
-    e.stopPropagation();
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
-  // Handle mobile menu item click
-  const handleMobileMenuItemClick = () => {
-    setIsDropdownOpen(false);
-    setIsMobileMenuOpen(false);
-  };
-
-  // Close mobile menu (only called by X button)
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
+  const isActive = (href) => activePath === href;
 
   return (
-    <nav className={`bg-white relative z-50 sticky top-0 transition-all duration-300 ${hasShadow ? 'shadow-lg' : 'shadow-sm'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-0">
-        <div className="flex justify-between items-center h-16 md:h-20">
-          
-          {/* Logo Section */}
-          <div className="flex-shrink-0">
-            <a href="/">
-            <img 
-              className="h-10 w-12 sm:h-12 sm:w-16 md:h-14 md:w-18 transition-transform duration-300 hover:scale-105" 
-              src="images/logo.png" 
-              alt="Logo" 
-              width="72"
-              height="60"
-            />
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        .nav-root { font-family: 'Poppins', sans-serif; }
+
+        @keyframes marquee {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+        .topbar-marquee {
+          display: flex;
+          width: max-content;
+          animation: marquee 34s linear infinite;
+        }
+        .topbar-marquee:hover { animation-play-state: paused; }
+
+        .nav-ul-line {
+          position: relative;
+          padding-bottom: 3px;
+        }
+        .nav-ul-line::after {
+          content: '';
+          position: absolute;
+          bottom: 0; left: 0;
+          width: 0; height: 2px;
+          background: #1d438d;
+          border-radius: 2px;
+          transition: width 0.24s cubic-bezier(0.4,0,0.2,1);
+        }
+        .nav-ul-line:hover::after,
+        .nav-ul-line.active::after { width: 100%; }
+
+        .drawer-slide {
+          transform: translateX(100%);
+          transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .drawer-slide.open { transform: translateX(0); }
+
+        .drawer-row { position: relative; }
+        .drawer-row::before {
+          content: '';
+          position: absolute;
+          left: 0; top: 18%; bottom: 18%;
+          width: 3px;
+          background: #1d438d;
+          border-radius: 0 3px 3px 0;
+          transform: scaleY(0);
+          transition: transform 0.18s ease;
+        }
+        .drawer-row.active::before,
+        .drawer-row:hover::before { transform: scaleY(1); }
+
+        .cta-shimmer { position: relative; overflow: hidden; }
+        .cta-shimmer::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.2) 50%, transparent 65%);
+          transform: translateX(-100%);
+          transition: transform 0.5s ease;
+        }
+        .cta-shimmer:hover::after { transform: translateX(100%); }
+      `}</style>
+
+      {/* TOP BAR */}
+      <div className="nav-root bg-[#1d438d]" style={{ position: 'relative', zIndex: 50 }}>
+        <div className="h-[38px] flex items-center overflow-hidden">
+          <div className="hidden md:flex items-center h-full shrink-0 pl-6 lg:pl-10 xl:pl-16 pr-5"
+            style={{ borderRight: '1px solid rgba(255,255,255,0.2)' }}>
+            <a href="tel:+977XXXXXXXXXX"
+              className="flex items-center gap-1.5 text-white/90 hover:text-white transition-colors duration-200"
+              style={{ fontSize: 11, fontWeight: 500 }}>
+              <PhoneIcon size={10} />
+              +977-XXXXXXXXXX
             </a>
           </div>
-
-          {/* Navigation Links - Desktop */}
-          <div className="hidden md:flex items-center space-x-6 lg:space-x-12 text-base lg:text-lg">
-            <a 
-              href="/" 
-              className="text-gray-700 hover:text-black font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Home
-            </a>
-            <a 
-              href="/about" 
-              className="text-gray-700 hover:text-black font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
-            >
-              About
-            </a>
-            <a 
-              href="/service" 
-              className="text-gray-700 hover:text-black font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Services
-            </a>
-
-              <a 
-              href="/study-in-russia" 
-              className="text-gray-700 hover:text-black font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Study in Russia
-            </a>
-            
-            {/* Dropdown Section - Desktop */}
-            {/* <div 
-              ref={dropdownRef}
-              className="relative"
-              onMouseEnter={() => setIsDropdownOpen(true)}
-              onMouseLeave={() => setIsDropdownOpen(false)}
-            >
-              <button 
-                onClick={toggleDropdown}
-                className="flex items-center text-gray-700 hover:text-black font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
-              >
-                Pages
-                <svg 
-                  className={`ml-1 h-4 w-4 lg:h-5 lg:w-5 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}
-                  xmlns="http://www.w3.org/2000/svg" 
-                  viewBox="0 0 20 20" 
-                  fill="currentColor"
-                >
-                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </button>
-              
-             
-              <div 
-                className={`absolute left-0 mt-2 w-48 lg:w-56 bg-white rounded-md shadow-xl ring-1 ring-black ring-opacity-5 z-10 overflow-hidden transition-all duration-200 ease-out ${
-                  isDropdownOpen 
-                    ? 'opacity-100 translate-y-0 visible' 
-                    : 'opacity-0 -translate-y-2 invisible'
-                }`}
-              >
-                <div className="py-1">
-                  {['Courses', 'Admission', 'Job Opportunities', 'Scholarships'].map((item) => (
-                    <a 
-                      key={item}
-                      href="#" 
-                      className="block px-4 py-2.5 text-sm lg:text-md text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150 border-l-4 border-transparent hover:border-blue-500"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {item}
-                    </a>
-                  ))}
+          <div style={{ flex: 1, overflow: 'hidden' }}>
+            <div className="topbar-marquee" style={{ color: 'rgba(255,255,255,0.82)', fontSize: 11, fontWeight: 500, letterSpacing: '0.03em' }}>
+              {[0, 1].map(copy => (
+                <div key={copy} style={{ display: 'flex', alignItems: 'center', gap: 22, padding: '0 18px' }}>
+                  <TItem icon={<MailIcon />}  text="info@albatrossinsights.com" />
+                  <TDot /><TItem icon={<ClockIcon />} text="Sun–Fri  |  10:00 AM–6:00 PM (NST)" />
+                  <TDot /><TItem icon={<MailIcon />}  text="admissions@albatrossinsights.com" />
+                  <TDot /><TItem icon={<PinIcon />}   text="Albatross Insights, Kathmandu, Nepal" />
+                  <TDot /><TItem icon={<PhoneIcon />} text="+977-XXXXXXXXXX" />
+                  <TDot /><TItem icon={<MailIcon />}  text="partnerships@albatrossinsights.com" />
+                  <span style={{ width: 32, flexShrink: 0 }} />
                 </div>
-              </div>
-            </div> */}
-            
-            {/* <a 
-              href="#" 
-              className="text-gray-700 hover:text-black font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Blog
-            </a> */}
-          </div>
-
-          {/* Contact Section */}
-          <div className="flex items-center space-x-2 sm:space-x-4">
-            <button className="hidden md:inline-flex items-center text-white px-4 py-2 lg:px-5 lg:py-2.5 border border-[#1d438d] bg-[#1d438d] text-sm lg:text-lg font-medium rounded-md hover:bg-black hover:text-white transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-              Contact
-            </button>
-            
-            {/* <a 
-              href="#" 
-              className="p-1.5 sm:p-2 rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-110"
-              aria-label="WhatsApp"
-            >
-              <img 
-                className="h-8 w-8 md:h-10 md:w-10 lg:h-11 lg:w-11" 
-                src="/images/whatsapp.png" 
-                alt="WhatsApp" 
-                width="44"
-                height="44"
-              />
-            </a> */}
-            
-            {/* Mobile menu button - Always shows hamburger, never X */}
-            <button 
-              onClick={toggleMobileMenu}
-              className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 "
-              aria-label={isMobileMenuOpen ? "Menu is open" : "Open menu"}
-              aria-expanded={isMobileMenuOpen}
-            >
-              {/* Hamburger icon - Always shows 3 lines, never changes to X */}
-              <svg 
-                className="w-6 h-6"
-                xmlns="http://www.w3.org/2000/svg" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke="currentColor"
-              >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M4 6h16M4 12h16M4 18h16" 
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu - Full screen overlay */}
-        <div className={`md:hidden fixed inset-0 z-40 transition-all duration-300 ease-in-out ${
-          isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
-        }`}>
-          {/* Backdrop - NO CLICK FUNCTIONALITY */}
-          <div 
-            className={`absolute inset-0 bg-black transition-opacity duration-300 ease-in-out ${
-              isMobileMenuOpen ? 'opacity-50' : 'opacity-0'
-            }`}
-            style={{ pointerEvents: 'none' }} // Disable clicking on backdrop
-            aria-hidden="true"
-          ></div>
-          
-          {/* Menu Panel */}
-          <div 
-            ref={mobileMenuRef}
-            className={`absolute top-0 left-0 h-full w-4/5 max-w-sm bg-white z-50 shadow-2xl transition-transform duration-300 ease-in-out ${
-              isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
-            }`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Header with Logo and X button */}
-            <div className="flex items-center justify-between px-6 py-4 border-b">
-              <div className="flex-shrink-0">
-                <a href="/">
-                <img 
-                  className="h-10 w-12" 
-                  src="images/logo.png" 
-                  alt="Logo" 
-                  width="48"
-                  height="40"
-                />
-                </a>
-              </div>
-              
-              {/* X button - ONLY WAY TO CLOSE THE MENU */}
-              <button 
-                onClick={closeMobileMenu}
-                className="p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 "
-                aria-label="Close menu"
-              >
-                <svg 
-                  className="w-6 h-6"
-                  xmlns="http://www.w3.org/2000/svg" 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
-                  stroke="currentColor"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M6 18L18 6M6 6l12 12" 
-                  />
-                </svg>
-              </button>
+              ))}
             </div>
-            
-            {/* Menu Items */}
-            <div className="px-4 pt-6 pb-8 space-y-1 overflow-y-auto h-[calc(100%-80px)]">
-              <a 
-                href="/" 
-                onClick={handleMobileMenuItemClick}
-                className="block px-4 py-3 text-lg font-medium text-gray-700 hover:text-black hover:bg-gray-50 rounded-lg transition-all duration-200 active:bg-gray-100"
-              >
-                Home
+          </div>
+          <div className="hidden md:flex items-center gap-2 h-full shrink-0 pl-4 pr-6 lg:pr-10 xl:pr-16"
+            style={{ borderLeft: '1px solid rgba(255,255,255,0.2)' }}>
+            {SOCIALS.map(({ label, d }) => (
+              <a key={label} href="#" aria-label={label}
+                className="flex items-center justify-center rounded-full transition-colors duration-200 hover:bg-white/30"
+                style={{ width: 22, height: 22, background: 'rgba(255,255,255,0.15)' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 256 256" fill="white"><path d={d}/></svg>
               </a>
-              <a 
-                href="/about" 
-                onClick={handleMobileMenuItemClick}
-                className="block px-4 py-3 text-lg font-medium text-gray-700 hover:text-black hover:bg-gray-50 rounded-lg transition-all duration-200 active:bg-gray-100"
-              >
-                About
-              </a>
-              <a 
-                href="/service" 
-                onClick={handleMobileMenuItemClick}
-                className="block px-4 py-3 text-lg font-medium text-gray-700 hover:text-black hover:bg-gray-50 rounded-lg transition-all duration-200 active:bg-gray-100"
-              >
-                Services
-              </a>
-              
-                <a 
-                href="/study-in-russia" 
-                onClick={handleMobileMenuItemClick}
-                className="block px-4 py-3 text-lg font-medium text-gray-700 hover:text-black hover:bg-gray-50 rounded-lg transition-all duration-200 active:bg-gray-100"
-              >
-                Study in Russia
-              </a>
-              {/* Mobile Dropdown */}
-              {/* <div ref={mobileDropdownRef} className="space-y-1">
-                <button 
-                  onClick={handleMobileDropdownToggle}
-                  className="flex items-center justify-between w-full px-4 py-3 text-lg font-medium text-gray-700 hover:text-black hover:bg-gray-50 rounded-lg transition-all duration-200 active:bg-gray-100"
-                  aria-expanded={isDropdownOpen}
-                >
-                  <span>Pages</span>
-                  <svg 
-                    className={`ml-1 h-5 w-5 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}
-                    xmlns="http://www.w3.org/2000/svg" 
-                    viewBox="0 0 20 20" 
-                    fill="currentColor"
-                  >
-                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </button>
-                
-                <div 
-                  className={`pl-6 space-y-1 overflow-hidden transition-all duration-300 ease-in-out ${
-                    isDropdownOpen ? 'max-h-96 opacity-100 mt-2' : 'max-h-0 opacity-0'
-                  }`}
-                >
-                  {['Courses', 'Admission', 'Job Opportunities', 'Scholarships'].map((item) => (
-                    <a 
-                      key={item}
-                      href="#" 
-                      onClick={handleMobileMenuItemClick}
-                      className="block px-4 py-2.5 text-base font-medium text-gray-600 hover:text-black hover:bg-gray-50 rounded-lg transition-all duration-200 active:bg-gray-100"
-                    >
-                      {item}
-                    </a>
-                  ))}
-                </div>
-              </div> */}
-              
-              {/* <a 
-                href="#" 
-                onClick={handleMobileMenuItemClick}
-                className="block px-4 py-3 text-lg font-medium text-gray-700 hover:text-black hover:bg-gray-50 rounded-lg transition-all duration-200 active:bg-gray-100"
-              >
-                Blog
-              </a> */}
-              
-              {/* WhatsApp section */}
-              <div className="px-4 py-4 border-t mt-4">
-                <a 
-                  href="#" 
-                  onClick={handleMobileMenuItemClick}
-                  className="inline-flex items-center p-3 rounded-xl hover:bg-gray-100 transition-all duration-200 bg-gray-50 w-full active:bg-gray-200"
-                >
-                  <img 
-                    className="h-10 w-10" 
-                    src="/images/whatsapp.png" 
-                    alt="WhatsApp" 
-                    width="40"
-                    height="40"
-                  />
-                  <div className="ml-3">
-                    <span className="block text-base font-medium text-gray-700">Chat with us</span>
-                    <span className="block text-sm text-gray-500">Typically replies in minutes</span>
-                  </div>
-                </a>
-              </div>
-              
-              {/* Contact button */}
-              {/* <button 
-                onClick={handleMobileMenuItemClick}
-                className="w-full mt-4 px-4 py-3 border border-transparent text-lg font-medium rounded-lg text-white bg-[#1d438d] hover:bg-black hover:text-white transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
-              >
-                Contact
-              </button> */}
-            </div>
+            ))}
           </div>
         </div>
       </div>
-    </nav>
+
+      {/* MAIN NAV */}
+      <nav
+        className="nav-root bg-white sticky top-0 z-50"
+        style={{
+          boxShadow: scrolled
+            ? '0 4px 24px rgba(29,67,141,0.12)'
+            : '0 1px 0 rgba(0,0,0,0.07)',
+          transition: 'box-shadow 0.3s ease',
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+          <div className="flex items-center justify-between" style={{ height: 64 }}>
+
+            {/* Logo */}
+            <a href="/" className="flex-shrink-0">
+              <img
+                src="/images/logo.png"
+                alt="Albatross Insights"
+                className="h-10 sm:h-11 md:h-[50px] w-auto"
+                style={{ transition: 'transform 0.3s ease' }}
+                onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
+                onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+              />
+            </a>
+
+            {/* Desktop links */}
+            <div className="hidden md:flex items-center gap-8 lg:gap-11">
+              {navLinks.map(({ label, href }) => (
+                <a
+                  key={href}
+                  href={href}
+                  className={`nav-ul-line flex items-center font-semibold transition-colors duration-200 ${isActive(href) ? 'text-[#1d438d] active' : 'text-[#2d3748] hover:text-[#1d438d]'}`}
+                  style={{ fontSize: 15 }}
+                >
+                  {label}
+                </a>
+              ))}
+            </div>
+
+            {/* Desktop CTA */}
+            <div className="hidden md:flex items-center gap-2.5">
+              <a href="tel:+977XXXXXXXXXX"
+                className="hidden lg:flex items-center gap-1.5 font-semibold border rounded-xl px-4 py-2 transition-colors duration-200 hover:bg-[#f0f5ff]"
+                style={{ color: '#1d438d', fontSize: 13, borderColor: '#d0def5' }}>
+                <PhoneIcon size={12} />
+                +977-XXXXXXXXXX
+              </a>
+              <a href="/contact">
+                <button
+                  className="cta-shimmer inline-flex items-center gap-1.5 font-semibold rounded-xl px-5 py-2.5 tracking-wide shadow-sm transition-colors duration-300"
+                  style={{ background: '#1d438d', color: 'white', fontSize: 14, border: 'none', cursor: 'pointer' }}
+                  onMouseEnter={e => e.currentTarget.style.background = '#163675'}
+                  onMouseLeave={e => e.currentTarget.style.background = '#1d438d'}
+                >
+                  Contact Us
+                </button>
+              </a>
+            </div>
+
+            {/* Mobile: call icon + hamburger */}
+            <div className="md:hidden flex items-center gap-1.5">
+              <a
+                href="tel:+977XXXXXXXXXX"
+                className="flex items-center justify-center rounded-xl transition-all duration-200"
+                style={{ width: 36, height: 36, background: '#eaf0f8', color: '#1d438d' }}
+                onMouseEnter={e => { e.currentTarget.style.background='#1d438d'; e.currentTarget.style.color='white'; }}
+                onMouseLeave={e => { e.currentTarget.style.background='#eaf0f8'; e.currentTarget.style.color='#1d438d'; }}
+              >
+                <PhoneIcon size={14} />
+              </a>
+              <button
+                onClick={() => setIsMobileOpen(v => !v)}
+                aria-label="Toggle menu"
+                aria-expanded={isMobileOpen}
+                className="flex flex-col justify-center items-center rounded-xl hover:bg-[#f0f5ff] transition-colors duration-200"
+                style={{ width: 40, height: 40, gap: 5, background: 'none', border: 'none', cursor: 'pointer' }}
+              >
+                <span style={{
+                  display: 'block', width: 20, height: 2,
+                  background: '#1d438d', borderRadius: 2,
+                  transition: 'transform 0.28s ease',
+                  transformOrigin: 'center',
+                  transform: isMobileOpen ? 'translateY(7px) rotate(45deg)' : 'none',
+                }} />
+                <span style={{
+                  display: 'block', width: 20, height: 2,
+                  background: '#1d438d', borderRadius: 2,
+                  transition: 'opacity 0.2s ease, transform 0.2s ease',
+                  opacity: isMobileOpen ? 0 : 1,
+                  transform: isMobileOpen ? 'scaleX(0)' : 'scaleX(1)',
+                }} />
+                <span style={{
+                  display: 'block', width: 20, height: 2,
+                  background: '#1d438d', borderRadius: 2,
+                  transition: 'transform 0.28s ease',
+                  transformOrigin: 'center',
+                  transform: isMobileOpen ? 'translateY(-7px) rotate(-45deg)' : 'none',
+                }} />
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+
+      {/* BACKDROP */}
+      <div
+        onClick={() => setIsMobileOpen(false)}
+        style={{
+          position: 'fixed', inset: 0, zIndex: 40,
+          background: 'rgba(0,0,0,0.38)',
+          backdropFilter: 'blur(2px)',
+          transition: 'opacity 0.3s ease',
+          opacity: isMobileOpen ? 1 : 0,
+          pointerEvents: isMobileOpen ? 'auto' : 'none',
+        }}
+      />
+
+      {/* DRAWER */}
+      <div style={{ position: 'fixed', inset: 0, zIndex: 60, pointerEvents: 'none' }}>
+        <div
+          ref={mobileRef}
+          className={`drawer-slide ${isMobileOpen ? 'open' : ''}`}
+          style={{
+            position: 'absolute', top: 0, right: 0,
+            height: '100%', width: '80%', maxWidth: 300,
+            background: '#fff',
+            display: 'flex', flexDirection: 'column',
+            boxShadow: '-8px 0 40px rgba(29,67,141,0.14)',
+            pointerEvents: 'auto',
+          }}
+        >
+          {/* header */}
+          <div className="flex items-center justify-between px-4 py-3.5 border-b border-[#edf2f7]">
+            <span className='text-md'>Menu</span>
+            <button
+              onClick={() => setIsMobileOpen(false)}
+              aria-label="Close menu"
+              className="flex items-center justify-center rounded-lg transition-all duration-200 hover:bg-[#1d438d] hover:text-white"
+              style={{ width: 32, height: 32, background: '#f4f7fc', color: '#374151', border: 'none', cursor: 'pointer' }}
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                <path d="M18 6L6 18M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+
+          {/* links */}
+          <div className="flex-1 overflow-y-auto px-3 py-3 flex flex-col gap-0.5">
+            {navLinks.map(({ label, href }) => (
+              <a
+                key={href}
+                href={href}
+                onClick={() => setIsMobileOpen(false)}
+                className={`drawer-row flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all duration-200 ${isActive(href) ? 'bg-[#eaf0f8] text-[#1d438d] active' : 'text-[#374151] hover:bg-[#f8fafd] hover:text-[#1d438d]'}`}
+                style={{ fontSize: 15 }}
+              >
+                <span
+                  style={{ width: 6, height: 6, borderRadius: '50%', flexShrink: 0, background: isActive(href) ? '#1d438d' : '#d1dbe8' }}
+                />
+                {label}
+                {isActive(href) && <span style={{ marginLeft: 'auto', fontSize: 11, color: 'rgba(29,67,141,0.4)', fontWeight: 400 }}>Current</span>}
+              </a>
+            ))}
+          </div>
+
+          {/* contact strip */}
+          <div className="px-4 py-3 border-t border-[#edf2f7] space-y-2.5" style={{ background: '#f7f9fd' }}>
+            <a href="mailto:info@albatrossinsights.com"
+              className="flex items-center gap-2 hover:text-[#1d438d] transition-colors duration-200"
+              style={{ fontSize: 11, color: '#4a6fa5' }}>
+              <span style={{ opacity: 0.6, display: 'flex' }}><MailIcon size={10} /></span>
+              info@albatrossinsights.com
+            </a>
+            <a href="tel:+977XXXXXXXXXX"
+              className="flex items-center gap-2 hover:text-[#1d438d] transition-colors duration-200"
+              style={{ fontSize: 11, color: '#4a6fa5' }}>
+              <span style={{ opacity: 0.6, display: 'flex' }}><PhoneIcon size={10} /></span>
+              +977-XXXXXXXXXX
+            </a>
+            <p className="flex items-center gap-2" style={{ fontSize: 11, color: '#4a6fa5', margin: 0 }}>
+              <span style={{ opacity: 0.6, display: 'flex' }}><ClockIcon size={10} /></span>
+              Sun–Fri &nbsp;|&nbsp; 10:00 AM–6:00 PM (NST)
+            </p>
+          </div>
+
+          {/* footer */}
+          <div className="px-4 py-4 border-t border-[#edf2f7] flex flex-col gap-2.5">
+            <a href="/contact" onClick={() => setIsMobileOpen(false)}>
+              <button
+                className="cta-shimmer w-full flex items-center justify-center gap-2 font-semibold rounded-xl shadow-sm transition-colors duration-300"
+                style={{ background: '#1d438d', color: 'white', fontSize: 14, padding: '12px', border: 'none', cursor: 'pointer' }}
+                onMouseEnter={e => e.currentTarget.style.background = '#163675'}
+                onMouseLeave={e => e.currentTarget.style.background = '#1d438d'}
+              >
+                Contact Us
+              </button>
+            </a>
+            <p style={{ fontSize: 10, textAlign: 'center', color: '#9ca3af', letterSpacing: '0.05em', margin: 0 }}>
+              Albatross Insights Pvt. Ltd · Kathmandu, Nepal
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
+
+const TDot = () => (
+  <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'rgba(255,255,255,0.25)', flexShrink: 0, display: 'inline-block' }} />
+);
+const TItem = ({ icon, text }) => (
+  <span style={{ display: 'flex', alignItems: 'center', gap: 5, flexShrink: 0 }}>
+    <span style={{ opacity: 0.6, display: 'flex' }}>{icon}</span>
+    {text}
+  </span>
+);
 
 export default Navbar;

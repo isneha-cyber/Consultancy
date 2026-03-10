@@ -41,14 +41,15 @@ const Steps = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-b from-white to-gray-50 py-12 sm:py-24 px-4 sm:px-6 lg:px-0">
-      <div className="max-w-7xl mx-auto">
+    <div className="py-12 sm:py-24 bg-gray-50">
+    <div className="  px-4 sm:px-6 lg:px-0">
+      <div className="sm:px-24 max-w-7xl mx-auto">
 
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
             <span className="relative inline-block px-2">
-              6 Steps
+              Steps
               <img
                 src="/images/underline.png"
                 alt=""
@@ -72,7 +73,7 @@ const Steps = () => {
             {steps.map((step) => (
               <div
                 key={step.id}
-                className={`lg:sticky ${step.stickyTop} transition-all duration-300`}
+                className={`sticky ${step.stickyTop} transition-all duration-300`}
               >
                 <div className="border-2 border-[#1d428c] rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300">
 
@@ -133,6 +134,7 @@ const Steps = () => {
         </div>
 
       </div>
+    </div>
     </div>
   );
 };

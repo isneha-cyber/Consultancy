@@ -26,30 +26,26 @@ const services = [
     description: "Orientation covering travel, accommodation, compliance, and post-arrival protocols.",
     image: "https://images.unsplash.com/photo-1488085061387-422e29b40080?w=600&q=80",
   },
-    {
+  {
     title: "Scholarship & Financial Advisory",
     description: "Guidance on tuition structures, scholarship opportunities, and bank-compliant documentation.",
     image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80",
   },
-  
 ]
 
 const StudentServices = () => {
   return (
-    <div className="bg-gray-50 flex items-center justify-center py-12 px-24">
-      <div className="grid grid-cols-2 gap-6">
+    <div className="bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-8 lg:px-24">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-6">
         {services.map((service, index) => {
           const isLastOdd = services.length % 2 !== 0 && index === services.length - 1
           return (
             <div
               key={index}
-              className={`bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col ${isLastOdd ? 'col-span-2 max-w-md mx-auto w-full' : ''}`}
+              className={`bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col ${isLastOdd ? 'sm:col-span-2 sm:max-w-md sm:mx-auto w-full' : ''}`}
             >
               {/* Image */}
-              <div
-                className="overflow-hidden rounded-xl m-3"
-                style={{ width: 'calc(100% - 24px)', height: '320px' }}
-              >
+              <div className="overflow-hidden rounded-xl m-3" style={{ height: '220px' }}>
                 <img
                   src={service.image}
                   alt={service.title}

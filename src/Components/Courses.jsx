@@ -36,7 +36,7 @@ const Courses = () => {
 
   return (
     <>
-      <div className="max-w-7xl mx-auto py-12 sm:py-24 px-4 sm:px-6 lg:px-8 text-center">
+      <div className="py-12 sm:py-24 px-4 sm:px-6 lg:px-24 text-center">
         {/* Fixed Title Section */}
         <div className="mb-8 sm:mb-12">
           <h2 className='text-3xl sm:text-4xl lg:text-5xl font-medium'>
@@ -165,7 +165,7 @@ const Courses = () => {
         </div>
 
         {/* Desktop Grid (hidden on mobile) */}
-        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-12">
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12 mt-12">
           {courses.map((course) => (
             <div
               key={course.id}

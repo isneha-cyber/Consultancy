@@ -10,11 +10,11 @@ const AlbatrossLogo = ({ className }) => (
 
 const ServiceHero = () => {
   return (
-    <section className="py-6 sm:py-8 md:py-12">
+    <section className="py-8 sm:py-10 md:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 lg:gap-12 xl:gap-20">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 xl:gap-20">
 
-          {/* Image Section */}
+          {/* Image — top on mobile, right on desktop */}
           <div className="w-full lg:w-1/2 flex justify-center order-first lg:order-last">
             <img
               src="/images/service.png"
@@ -24,84 +24,43 @@ const ServiceHero = () => {
             />
           </div>
 
-          {/* Content Section */}
-          <div className="w-full lg:w-1/2 flex flex-col order-last lg:order-first">
+          {/* Content */}
+          <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left order-last lg:order-first">
 
-            {/* ── Mobile Layout (hidden on lg+) ── */}
-            <div className="lg:hidden">
-
-              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-4 md:gap-6 mb-5 sm:mb-6 md:mb-8">
-                <div className="flex-shrink-0">
-                  <AlbatrossLogo className="w-9 h-10 sm:w-10 sm:h-12 md:w-11 md:h-14" />
-                </div>
-
-                <div className="flex-1">
-                  <h1 className="text-2xl sm:text-3xl md:text-4xl font-normal leading-tight text-center sm:text-left">
-                    <span className="block mb-1 sm:mb-2 md:mb-3">Student </span>
-                    <span className="relative inline-block mb-3 sm:mb-4 font-bold">
-                      Service
-                      <img
-                        src="/images/underline.png"
-                        alt=""
-                        className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-2 sm:h-3"
-                      />
-                    </span>
-                    <span className="block"> Offers</span>
-                  </h1>
-                </div>
-              </div>
-
-              <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-5 sm:mb-6 md:mb-8 max-w-2xl text-center sm:text-left px-2 sm:px-0">
-                Structured pathways to leading Russian universities guided by transparency, integrity, and institutional credibility.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3 w-full max-w-xs sm:max-w-none sm:justify-start mx-auto sm:mx-0">
-                <button className="w-full sm:w-auto bg-[#1d438d] text-white py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg text-sm sm:text-base font-medium hover:bg-[#163675] transition duration-300 border border-[#1d438d]">
-                  Book Consultation
-                </button>
-                <button className="w-full sm:w-auto border border-[#1d438d] text-[#1d438d] py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg text-sm sm:text-base font-medium hover:bg-[#1d438d] hover:text-white transition duration-300 flex items-center justify-center gap-2">
-                  Register
-                </button>
-              </div>
+            {/* Logo */}
+            <div className="mb-3 sm:mb-4">
+              <AlbatrossLogo className="w-9 h-10 sm:w-10 sm:h-12 xl:w-12 xl:h-14" />
             </div>
 
-            {/* ── Desktop Layout (hidden below lg) ── */}
-            <div className="hidden lg:flex flex-col items-start text-left">
+            {/* Heading */}
+            <div className="mb-4 sm:mb-5 lg:mb-6">
+              <h1 className="text-3xl sm:text-4xl xl:text-5xl font-normal leading-tight">
+                Student{' '}
+                <span className="relative inline-block font-bold">
+                  Service
+                  <img
+                    src="/images/underline.png"
+                    alt=""
+                    className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-2 sm:h-3 xl:h-4"
+                  />
+                </span>
+                <span className="block mt-2 sm:mt-3">Offers</span>
+              </h1>
+            </div>
 
-              <div className="mb-2">
-                <AlbatrossLogo className="w-10 h-12 lg:w-10 lg:h-12 xl:w-12 xl:h-14" />
-              </div>
+            {/* Description */}
+            <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-gray-600 mb-6 sm:mb-7 max-w-lg lg:max-w-2xl">
+              Structured pathways to leading Russian universities guided by transparency, integrity, and institutional credibility.
+            </p>
 
-              <div className="mb-4 lg:mb-6">
-                <h1 className="text-4xl lg:text-4xl xl:text-5xl font-normal leading-tight">
-                  <span className="block mb-2 xl:mb-3">Student
-                     <span className="relative inline-block mb-4 xl:mb-5 font-bold ps-4">
-                    Service
-                    <img
-                      src="/images/underline.png"
-                      alt=""
-                      className="absolute -bottom-2 xl:-bottom-3 left-0 w-full h-3 xl:h-4"
-                    />
-                  </span>
-                  <span className="block">Offeres</span>
-                  </span>
-                 
-                  
-                </h1>
-              </div>
-
-              <p className="text-lg lg:text-xl text-gray-600 mb-6 lg:mb-6 xl:mb-8 max-w-2xl">
-                Structured pathways to leading Russian universities guided by transparency, integrity, and institutional credibility.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-sm sm:max-w-none">
-                <button className="w-full sm:w-auto bg-[#1d438d] text-white py-3 px-4 sm:px-6 rounded-lg text-base lg:text-lg font-medium hover:bg-[#163675] transition duration-300 border border-[#1d438d]">
-                  Book Consultation
-                </button>
-                <button className="w-full sm:w-auto border border-[#1d438d] text-[#1d438d] py-3 px-4 sm:px-6 rounded-lg text-base lg:text-lg font-medium hover:bg-[#1d438d] hover:text-white transition duration-300 flex items-center justify-center gap-2">
-                  Register 
-                </button>
-              </div>
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
+              <button className="w-full sm:w-auto bg-[#1d438d] text-white py-2.5 sm:py-3 px-6 rounded-lg text-sm sm:text-base lg:text-lg font-medium hover:bg-[#163675] transition duration-300 border border-[#1d438d]">
+                Book Consultation
+              </button>
+              <button className="w-full sm:w-auto border border-[#1d438d] text-[#1d438d] py-2.5 sm:py-3 px-6 rounded-lg text-sm sm:text-base lg:text-lg font-medium hover:bg-[#1d438d] hover:text-white transition duration-300 flex items-center justify-center gap-2">
+                Register
+              </button>
             </div>
 
           </div>

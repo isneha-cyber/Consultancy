@@ -339,6 +339,7 @@ import Hero2 from '../Components/Hero2'
 import Study from '../Components/Study'
 import UniversityPartnerships from '../Components/Partners'
 import Courses from '../Components/Courses'
+import BottomBanner from '../Components/BottomBanner'
 
 const StudyInRussia = () => {
   return (
@@ -347,6 +348,7 @@ const StudyInRussia = () => {
       <Study/>
       <UniversityPartnerships/>
       <Courses/>
+      <BottomBanner/>
     </div>
   )
 }

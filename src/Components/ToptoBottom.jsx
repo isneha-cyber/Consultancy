@@ -46,7 +46,7 @@ const BacktoTop = () => {
             <button
                 onClick={openWhatsApp}
                 className="
-                    fixed bottom-8 right-8
+                    fixed bottom-4 right-8
                     group
                     cursor-pointer
                     sm:w-14 sm:h-14 w-12 h-12
