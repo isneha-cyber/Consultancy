@@ -6,36 +6,36 @@ const FAQAccordion = () => {
 
   const faqs = [
     {
-      question: "What does Edwise do as a study abroad consultant?",
-      answer: "Edwise is a comprehensive study abroad consultant that helps students navigate their international education journey. We provide guidance on university selection, application process, visa assistance, test preparation, and pre-departure support to ensure a smooth transition to studying abroad."
+      question: "Are Russian degrees internationally recognized?",
+      answer: "Yes, many Russian universities hold global accreditation and recognition. Degrees from top Russian institutions are recognized by UNESCO, WHO, and educational bodies across 150+ countries. Medical degrees in particular are recognized by the Nepal Medical Council (NMC), making Russia one of the most sought-after destinations for Nepali medical students."
     },
     {
-      question: "Are the services of Edwise available for free?",
-      answer: "Edwise offers a range of services with various pricing structures. While some initial consultations and guidance may be complimentary, comprehensive services like application assistance, test preparation, and visa guidance typically involve fees. Contact us directly for detailed pricing information."
+      question: "Are English-medium programs available?",
+      answer: "Yes, especially in Medicine, Engineering, and technical disciplines. Most leading Russian universities offer full degree programs taught entirely in English for international students. Foundation Russian language courses are also included in the curriculum to help students adapt to daily life."
     },
     {
-      question: "How do I get started on my study abroad journey with Edwise?",
-      answer: "Getting started is simple! You can schedule a consultation with our expert counselors either online or at one of our offices. During this session, we'll assess your academic background, career goals, and preferences to create a personalized roadmap for your study abroad journey."
+      question: "How long does the visa process take?",
+      answer: "Processing timelines vary but are streamlined when documentation is properly structured. On average, the Russian student visa takes 2–4 weeks after your university acceptance letter is issued. Our dedicated visa team has a 99% success rate and manages the entire process on your behalf."
     },
     {
-      question: "What does Edwise do as a study abroad consultant?",
-      answer: "Edwise is a comprehensive study abroad consultant that helps students navigate their international education journey. We provide guidance on university selection, application process, visa assistance, test preparation, and pre-departure support to ensure a smooth transition to studying abroad."
+      question: "What are the tuition fees for studying in Russia?",
+      answer: "Tuition fees in Russia are significantly more affordable compared to Western countries. Depending on the university and program, annual fees range from approximately USD 3,500 to USD 7,000. Combined with a low cost of living — around USD 200–350 per month — Russia offers exceptional value for international students."
     },
     {
-      question: "Are the services of Edwise available for free?",
-      answer: "Edwise offers a range of services with various pricing structures. While some initial consultations and guidance may be complimentary, comprehensive services like application assistance, test preparation, and visa guidance typically involve fees. Contact us directly for detailed pricing information."
+      question: "Is it safe for Nepali students to study in Russia?",
+      answer: "Yes. Major university cities like Moscow, Saint Petersburg, Kazan, and Tomsk have large and well-established international student communities. Universities provide on-campus accommodation, student support services, and orientation programs specifically designed to help foreign students settle in comfortably."
     },
     {
-      question: "How do I get started on my study abroad journey with Edwise?",
-      answer: "Getting started is simple! You can schedule a consultation with our expert counselors either online or at one of our offices. During this session, we'll assess your academic background, career goals, and preferences to create a personalized roadmap for your study abroad journey."
+      question: "What scholarships are available for Nepali students?",
+      answer: "Russian government scholarships are available through the Rossotrudnichestvo program, which covers tuition fees for selected international students each year. Many universities also offer merit-based partial scholarships. Albatross Insights helps you identify and apply for all relevant scholarship opportunities as part of our service."
     },
     {
-      question: "Does Edwise provide coaching for IELTS?",
-      answer: "Yes, Edwise provides comprehensive IELTS coaching to help students achieve their desired scores. Our experienced trainers offer classroom training, mock tests, study materials, and personalized feedback to ensure you're fully prepared for the IELTS examination."
+      question: "What documents are required for university admission?",
+      answer: "Typically required documents include academic transcripts and certificates, a valid passport, a Statement of Purpose (SOP), recommendation letters, a medical fitness certificate, and passport-sized photographs. Our documentation team assists you in structuring and verifying every document to meet both university and embassy standards."
     },
     {
-      question: "How much does it cost to study abroad for Indian students?",
-      answer: "The cost of studying abroad varies significantly depending on the country, university, and program. On average, tuition fees can range from $10,000 to $50,000 per year, with living expenses adding another $10,000 to $20,000 annually. We can help you explore scholarship opportunities and affordable options based on your budget."
+      question: "How does Albatross Insights support students after arrival?",
+      answer: "Our support does not end when you board the flight. We provide a comprehensive pre-departure orientation covering accommodation, banking, local transport, cultural adjustment, and emergency contacts. We also stay in touch throughout your first semester to ensure a smooth transition into university life in Russia."
     }
   ];
 
@@ -44,12 +44,16 @@ const FAQAccordion = () => {
   };
 
   return (
-    <div className=" py-12 sm:py-24 ">
+    <div className="py-12 sm:py-24 px-4 sm:px-6 lg:px-0">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl sm:text-6xl font-bold text-center mb-12 text-gray-900">
+
+        <h1 className="text-4xl sm:text-6xl font-bold text-center mb-4 text-gray-900">
           FAQs
         </h1>
-        
+        <p className="text-center text-gray-500 text-base sm:text-lg mb-10 sm:mb-14 max-w-2xl mx-auto">
+          Everything you need to know about studying in Russia with Albatross Insights.
+        </p>
+
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div
@@ -71,7 +75,7 @@ const FAQAccordion = () => {
                   )}
                 </div>
               </button>
-              
+
               {openIndex === index && (
                 <div className="px-6 sm:px-8 pb-5 sm:pb-6">
                   <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
@@ -82,6 +86,7 @@ const FAQAccordion = () => {
             </div>
           ))}
         </div>
+
       </div>
     </div>
   );

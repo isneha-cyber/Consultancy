@@ -8,7 +8,7 @@ const AlbatrossLogo = ({ className }) => (
   </svg>
 )
 
-const Hero = () => {
+const ServiceHero = () => {
   return (
     <section className="py-6 sm:py-8 md:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,7 +17,7 @@ const Hero = () => {
           {/* Image Section */}
           <div className="w-full lg:w-1/2 flex justify-center order-first lg:order-last">
             <img
-              src="/images/hero.webp"
+              src="/images/service.png"
               alt="Albatross Expert Consultation"
               className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-full h-auto object-contain rounded-lg"
               loading="lazy"
@@ -37,16 +37,16 @@ const Hero = () => {
 
                 <div className="flex-1">
                   <h1 className="text-2xl sm:text-3xl md:text-4xl font-normal leading-tight text-center sm:text-left">
-                    <span className="block mb-1 sm:mb-2 md:mb-3">Bringing Nepal to</span>
+                    <span className="block mb-1 sm:mb-2 md:mb-3">Student </span>
                     <span className="relative inline-block mb-3 sm:mb-4 font-bold">
-                      Global Academic
+                      Service
                       <img
                         src="/images/underline.png"
                         alt=""
                         className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-2 sm:h-3"
                       />
                     </span>
-                    <span className="block">Excellence</span>
+                    <span className="block"> Offers</span>
                   </h1>
                 </div>
               </div>
@@ -74,16 +74,19 @@ const Hero = () => {
 
               <div className="mb-4 lg:mb-6">
                 <h1 className="text-4xl lg:text-4xl xl:text-5xl font-normal leading-tight">
-                  <span className="block mb-2 xl:mb-3">Bringing Nepal to</span>
-                  <span className="relative inline-block mb-4 xl:mb-5 font-bold">
-                    Global Academic
+                  <span className="block mb-2 xl:mb-3">Student
+                     <span className="relative inline-block mb-4 xl:mb-5 font-bold ps-4">
+                    Service
                     <img
                       src="/images/underline.png"
                       alt=""
                       className="absolute -bottom-2 xl:-bottom-3 left-0 w-full h-3 xl:h-4"
                     />
                   </span>
-                  <span className="block">Excellence</span>
+                  <span className="block">Offeres</span>
+                  </span>
+                 
+                  
                 </h1>
               </div>
 
@@ -108,4 +111,4 @@ const Hero = () => {
   )
 }
 
-export default Hero
+export default ServiceHero

@@ -31,8 +31,8 @@ export default function Reach() {
   };
 
   return (
-    <div className=" bg-[#1d428c] py-12 sm:py-24 sm:px-0 px-4">
-      <div className="max-w-7xl mx-auto">
+    <div className=" bg-[#1d428c] py-12 sm:py-24 sm:px-24 px-4">
+     
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12  items-center">
           {/* Image Section */}
           <div className="max-w-2xl mx-autoflex justify-center t">
@@ -40,7 +40,7 @@ export default function Reach() {
               <img
                 src="images/reach.webp"
                 alt="Graduates celebrating"
-                className="w-full h-[70vh] object-cover"
+                className="w-full h-[90vh] object-cover"
               />
             </div>
           </div>
@@ -198,7 +198,7 @@ export default function Reach() {
             </div>
           </div>
         </div>
-      </div>
+   
     </div>
   );
 }

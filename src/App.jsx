@@ -2,42 +2,37 @@ import {useState} from 'react'
 
 import './App.css'
 import Navbar from './Components/Navbar'
-import Hero from './Components/Hero'
-import StatsBanner from './Components/StatsBAnner'
-import Topuni from './Components/Topuni'
-import Steps from './Components/Steps'
-import Counselor from './Components/Counselor'
-import Awaits from './Components/Awaits'
-import Courses from './Components/Courses'
-import Blog from './Components/Blog'
-import Faqs from './Components/Faqs'
-import SuccessStories from './Components/SuccessStories'
-import Reach from './Components/Reach'
+
 import ToptoBottom from './Components/ToptoBottom'
 import SmoothScrollButton from './Components/SmoothScrollButton'
 import Footer from './Components/Footer'
+import HomePage from './Pages/HomePage'
+import StudyInRussia from './Pages/StudyInRussia'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Service from './Pages/Service'
+import About from './Pages/About'
+
 
 function App() {
 	const [count, setCount] = useState(0)
 
 	return (<>
+	  <BrowserRouter>
 		<Navbar/>
 		<SmoothScrollButton/>
 	<ToptoBottom/>
-		<Hero/>
-		<StatsBanner/>
-		<Topuni/>
-		<Steps/>
-		 <Awaits/>
-    <Counselor/>
-  <SuccessStories/>
-    <Courses/>
-    <Blog/>
-    <Reach/>
-    <Faqs/>
-    
+	  <Routes>
+<Route path="/" element={<HomePage />} />
+<Route path="/study-in-russia" element={<StudyInRussia/>} />
+<Route path="/service" element={<Service/>} />
+<Route path="/about" element={<About/>} />
+
+
+    </Routes>
 	<Footer/>
-	</>)
+	</BrowserRouter>
+	</>
+	)
 }
 
 export default App

@@ -3,20 +3,20 @@ import React from 'react';
 export default function StatsBanner() {
   const stats = [
     {
-      value: "150+",
-      label: "Experienced Counsellor"
+      value: "500+",
+      label: "Students Placed"
     },
     {
-      value: "5+ Years",
-      label: "Average Experience"
+      value: "50+",
+      label: "Partner Universities"
     },
     {
       value: "99%",
       label: "Visa Success Rate"
     },
     {
-      value: "Unlimited",
-      label: "Follow Ups"
+      value: "Free",
+      label: "End-to-End Support"
     },
     {
       value: "Best",

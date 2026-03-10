@@ -81,6 +81,7 @@ const Navbar = () => {
           
           {/* Logo Section */}
           <div className="flex-shrink-0">
+            <a href="/">
             <img 
               className="h-10 w-12 sm:h-12 sm:w-16 md:h-14 md:w-18 transition-transform duration-300 hover:scale-105" 
               src="images/logo.png" 
@@ -88,31 +89,39 @@ const Navbar = () => {
               width="72"
               height="60"
             />
+            </a>
           </div>
 
           {/* Navigation Links - Desktop */}
           <div className="hidden md:flex items-center space-x-6 lg:space-x-12 text-base lg:text-lg">
             <a 
-              href="#" 
+              href="/" 
               className="text-gray-700 hover:text-black font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
             >
               Home
             </a>
             <a 
-              href="#" 
+              href="/about" 
               className="text-gray-700 hover:text-black font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
             >
               About
             </a>
             <a 
-              href="#" 
+              href="/service" 
+              className="text-gray-700 hover:text-black font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+            >
+              Services
+            </a>
+
+              <a 
+              href="/study-in-russia" 
               className="text-gray-700 hover:text-black font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
             >
               Study in Russia
             </a>
             
             {/* Dropdown Section - Desktop */}
-            <div 
+            {/* <div 
               ref={dropdownRef}
               className="relative"
               onMouseEnter={() => setIsDropdownOpen(true)}
@@ -133,7 +142,7 @@ const Navbar = () => {
                 </svg>
               </button>
               
-              {/* Dropdown Menu with Animation */}
+             
               <div 
                 className={`absolute left-0 mt-2 w-48 lg:w-56 bg-white rounded-md shadow-xl ring-1 ring-black ring-opacity-5 z-10 overflow-hidden transition-all duration-200 ease-out ${
                   isDropdownOpen 
@@ -154,14 +163,14 @@ const Navbar = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </div> */}
             
-            <a 
+            {/* <a 
               href="#" 
               className="text-gray-700 hover:text-black font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
             >
               Blog
-            </a>
+            </a> */}
           </div>
 
           {/* Contact Section */}
@@ -234,6 +243,7 @@ const Navbar = () => {
             {/* Header with Logo and X button */}
             <div className="flex items-center justify-between px-6 py-4 border-b">
               <div className="flex-shrink-0">
+                <a href="/">
                 <img 
                   className="h-10 w-12" 
                   src="images/logo.png" 
@@ -241,6 +251,7 @@ const Navbar = () => {
                   width="48"
                   height="40"
                 />
+                </a>
               </div>
               
               {/* X button - ONLY WAY TO CLOSE THE MENU */}
@@ -269,29 +280,36 @@ const Navbar = () => {
             {/* Menu Items */}
             <div className="px-4 pt-6 pb-8 space-y-1 overflow-y-auto h-[calc(100%-80px)]">
               <a 
-                href="#" 
+                href="/" 
                 onClick={handleMobileMenuItemClick}
                 className="block px-4 py-3 text-lg font-medium text-gray-700 hover:text-black hover:bg-gray-50 rounded-lg transition-all duration-200 active:bg-gray-100"
               >
                 Home
               </a>
               <a 
-                href="#" 
+                href="/about" 
                 onClick={handleMobileMenuItemClick}
                 className="block px-4 py-3 text-lg font-medium text-gray-700 hover:text-black hover:bg-gray-50 rounded-lg transition-all duration-200 active:bg-gray-100"
               >
                 About
               </a>
               <a 
-                href="#" 
+                href="/service" 
+                onClick={handleMobileMenuItemClick}
+                className="block px-4 py-3 text-lg font-medium text-gray-700 hover:text-black hover:bg-gray-50 rounded-lg transition-all duration-200 active:bg-gray-100"
+              >
+                Services
+              </a>
+              
+                <a 
+                href="/study-in-russia" 
                 onClick={handleMobileMenuItemClick}
                 className="block px-4 py-3 text-lg font-medium text-gray-700 hover:text-black hover:bg-gray-50 rounded-lg transition-all duration-200 active:bg-gray-100"
               >
                 Study in Russia
               </a>
-              
               {/* Mobile Dropdown */}
-              <div ref={mobileDropdownRef} className="space-y-1">
+              {/* <div ref={mobileDropdownRef} className="space-y-1">
                 <button 
                   onClick={handleMobileDropdownToggle}
                   className="flex items-center justify-between w-full px-4 py-3 text-lg font-medium text-gray-700 hover:text-black hover:bg-gray-50 rounded-lg transition-all duration-200 active:bg-gray-100"
@@ -324,15 +342,15 @@ const Navbar = () => {
                     </a>
                   ))}
                 </div>
-              </div>
+              </div> */}
               
-              <a 
+              {/* <a 
                 href="#" 
                 onClick={handleMobileMenuItemClick}
                 className="block px-4 py-3 text-lg font-medium text-gray-700 hover:text-black hover:bg-gray-50 rounded-lg transition-all duration-200 active:bg-gray-100"
               >
                 Blog
-              </a>
+              </a> */}
               
               {/* WhatsApp section */}
               <div className="px-4 py-4 border-t mt-4">

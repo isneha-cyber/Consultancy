@@ -1,155 +1,183 @@
-import React, { useState } from 'react';
-import { Facebook, Twitter, Instagram, Linkedin, ArrowUpRight } from 'lucide-react';
+import { useState } from "react";
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+  MapPin,
+  Clock,
+  Phone,
+  Mail,
+} from "lucide-react";
+
+const socialLinks = [
+  { Icon: Facebook, label: "Facebook", href: "#" },
+  { Icon: Twitter, label: "Twitter", href: "#" },
+  { Icon: Instagram, label: "Instagram", href: "#" },
+  { Icon: Linkedin, label: "LinkedIn", href: "#" },
+];
+
+const companyLinks = [
+  { name: "Terms & Conditions", href: "#" },
+  { name: "Privacy Policy", href: "#" },
+  { name: "Scholarships", href: "#" },
+  { name: "Careers", href: "#" },
+];
+
+const emailLinks = [
+  { text: "info@albatrossinsights.com", href: "mailto:info@albatrossinsights.com" },
+  { text: "admissions@albatrossinsights.com", href: "mailto:admissions@albatrossinsights.com" },
+  { text: "partnerships@albatrossinsights.com", href: "mailto:partnerships@albatrossinsights.com" },
+];
+
+const contactDetails = [
+  { Icon: MapPin, text: "Albatross Insights Pvt. Ltd, Kathmandu, Nepal", href: null },
+  { Icon: Clock, text: "Sunday – Friday | 10:00 AM – 6:00 PM (NST)", href: null },
+  { Icon: Phone, text: "+977-XXXXXXXXXX", href: "tel:+977XXXXXXXXXX" },
+];
+
+function NavLink({ name, href }) {
+  return (
+    <li>
+      <a
+        href={href}
+        className="text-blue-100 hover:text-white text-sm transition-colors duration-300"
+      >
+        {name}
+      </a>
+    </li>
+  );
+}
+
+function ContactItem({ Icon, text, href }) {
+  const inner = (
+    <div className="flex items-start gap-3">
+      <Icon size={14} className="mt-0.5 shrink-0 text-blue-200 opacity-70" />
+      <span className="text-blue-100 text-sm leading-relaxed">{text}</span>
+    </div>
+  );
+  if (href) {
+    return (
+      <li>
+        <a href={href} className="hover:text-white transition-colors duration-200 [&>div>span]:hover:text-white">
+          {inner}
+        </a>
+      </li>
+    );
+  }
+  return <li>{inner}</li>;
+}
+
+function EmailItem({ text, href }) {
+  return (
+    <li>
+      <a href={href} className="flex items-start gap-3 group">
+        <Mail size={14} className="mt-0.5 shrink-0 text-blue-200 opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
+        <span className="text-blue-100 text-sm leading-relaxed break-all group-hover:text-white transition-colors duration-200">
+          {text}
+        </span>
+      </a>
+    </li>
+  );
+}
 
 export default function Footer() {
   const [isHovered, setIsHovered] = useState(null);
 
-  const socialLinks = [
-    { Icon: Facebook, label: 'Facebook', href: '#' },
-    { Icon: Twitter, label: 'Twitter', href: '#' },
-    { Icon: Instagram, label: 'Instagram', href: '#' },
-    { Icon: Linkedin, label: 'LinkedIn', href: '#' }
-  ];
-
-  const companyLinks = [
-    { name: 'Terms & Conditions', href: '#' },
-    { name: 'Privacy Policy', href: '#' },
-    { name: 'Scholarships', href: '#' },
-    { name: 'Careers', href: '#' }
-  ];
-
-  const usefulLinks = [
-    { name: 'Home', href: '#' },
-    { name: 'About', href: '#' },
-    { name: 'Courses', href: '#' },
-    { name: 'Blogs', href: '#' }
-  ];
-
-  const getInTouch = [
-    { name: 'Contact Us', href: '#' },
-    { name: 'Email', href: '#' },
-    { name: 'Address', href: '#' }
-  ];
-
   return (
     <footer className="bg-[#1d428c] text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-0 py-12 sm:py-24">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-0 mb-12">
-          {/* Logo Section - 1 Column */}
-          <div className="lg:pr-8">
-            <div className="bg-white p-4 inline-block mb-4">
-              <img 
-                src="/images/logo.png" 
-                alt="Company Logo" 
-                className="sm:h-32 h-12 w-auto"
+      <div className="px-4 sm:px-6 lg:px-24 py-12 sm:py-20">
+
+        {/* Main Footer Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 mb-12">
+
+          {/* Brand — 3/12 */}
+          <div className="sm:col-span-2 lg:col-span-3">
+            <div className="bg-white p-4 inline-block mb-5">
+              <img
+                src="/images/logo.png"
+                alt="Albatross Insights"
+                className="h-12 sm:h-16 w-auto"
               />
             </div>
-            <p className="text-lg  mt-4 max-w-xs">
-              Empowering education and professional growth through innovative solutions.
+            <p className="text-blue-100 text-sm leading-relaxed mt-2">
+              Nepal's trusted consultancy for structured pathways to Russia's leading universities.
             </p>
           </div>
 
-          {/* Vertical Border - Hidden on mobile */}
-          <div className="hidden lg:block w-px bg-white mx-8"></div>
+          {/* Company — 2/12 */}
+          <div className="lg:col-span-2 lg:pl-4">
+            <h3 className="text-white text-lg font-semibold mb-4 pb-2 border-b-2 border-white inline-block">
+              Company
+            </h3>
+            <ul className="space-y-3 mt-4">
+              {companyLinks.map((link) => (
+                <NavLink key={link.name} {...link} />
+              ))}
+            </ul>
+          </div>
 
-          {/* Links Section - 3 Columns */}
-          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {/* Company Links */}
-            <div>
-              <h3 className="text-white text-xl font-semibold mb-6 pb-2 border-b-2 border-white inline-block">
-                Company
-              </h3>
-              <ul className="space-y-3 mt-6">
-                {companyLinks.map((link, index) => (
-                  <li key={index}>
-                    <a
-                      href={link.href}
-                      className=" hover:text-white transition-all duration-300 inline-block hover:translate-x-1 transform text-md"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Contact Us (emails) — 3/12 */}
+          <div className="lg:col-span-3 lg:pl-2">
+            <h3 className="text-white text-lg font-semibold mb-4 pb-2 border-b-2 border-white inline-block">
+              Contact Us
+            </h3>
+            <ul className="space-y-3 mt-4">
+              {emailLinks.map((item, i) => (
+                <EmailItem key={i} {...item} />
+              ))}
+            </ul>
+          </div>
 
-            {/* Useful Links */}
-            <div>
-              <h3 className="text-white text-xl font-semibold mb-6 pb-2 border-b-2 border-white  inline-block">
-                Useful Links
-              </h3>
-              <ul className="space-y-3 mt-6">
-                {usefulLinks.map((link, index) => (
-                  <li key={index}>
-                    <a
-                      href={link.href}
-                      className="text-blue-100 hover:text-white transition-all duration-300 inline-block hover:translate-x-1 transform text-lg"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Get In Touch */}
-            <div>
-              <h3 className="text-white text-xl font-semibold mb-6 pb-2 border-b-2 border-white inline-block">
-                Get In Touch
-              </h3>
-              <ul className="space-y-3 mt-6">
-                {getInTouch.map((link, index) => (
-                  <li key={index}>
-                    <a
-                      href={link.href}
-                      className=" text-white transition-all duration-300 inline-block hover:translate-x-1 transform text-lg"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Get In Touch — 4/12 */}
+          <div className="lg:col-span-4 lg:pl-2">
+            <h3 className="text-white text-lg font-semibold mb-4 pb-2 border-b-2 border-white inline-block">
+              Get In Touch
+            </h3>
+            <ul className="space-y-4 mt-4">
+              {contactDetails.map((item, i) => (
+                <ContactItem key={i} {...item} />
+              ))}
+            </ul>
           </div>
         </div>
 
-        {/* Horizontal Border */}
-        <div className="border-t border-white pt-8">
-          {/* Bottom Bar */}
-          <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
+        {/* Bottom Bar */}
+        <div className="border-t border-white/30 pt-8">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
+
             {/* Social Links */}
-            <div className="flex items-center gap-4 order-2 lg:order-1">
-              <span className="text-lg text-white hidden sm:block">Follow us:</span>
+            <div className="flex items-center gap-4 order-2 sm:order-1">
+              <span className="text-sm text-white hidden sm:block">Follow us:</span>
               <div className="flex gap-3">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
                     href={social.href}
-                    className="bg-white text-[#1d428c] transition-all duration-300 p-2.5 rounded-full hover:scale-110 transform"
                     aria-label={social.label}
+                    className="bg-white text-[#1d428c] transition-all duration-300 p-2.5 rounded-full hover:scale-110 transform"
                     onMouseEnter={() => setIsHovered(index)}
                     onMouseLeave={() => setIsHovered(null)}
                   >
-                    <social.Icon 
-                      size={18} 
-                      className={isHovered === index ? 'animate-pulse' : ''} 
+                    <social.Icon
+                      size={17}
+                      className={isHovered === index ? "animate-pulse" : ""}
                     />
                   </a>
                 ))}
               </div>
             </div>
 
-            {/* Copyright & Credits */}
-            <div className="flex flex-col items-center lg:items-end gap-2 text-center lg:text-right order-1 lg:order-2">
+            {/* Copyright */}
+            <div className="flex flex-col items-center sm:items-end gap-1 text-center sm:text-right order-1 sm:order-2">
               <div className="text-sm text-white">
-                <span>© 2026 </span>
-                <span className="text-white font-semibold">Albatross Insight Private Limited</span>
+                © 2026{" "}
+                <span className="font-semibold">Albatross Insights Private Limited</span>
               </div>
-              <div className="text-md text-white">
-                Crafted by{' '}
-                <a 
-                  href="https://www.sait.com.np/" 
+              <div className="text-xs text-blue-100">
+                Crafted by{" "}
+                <a
+                  href="https://www.sait.com.np/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white font-medium hover:underline transition-all duration-300"
@@ -159,14 +187,6 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Scroll to Top Button */}
-            {/* <button
-              className="bg-white text-[#1d428c] hover:bg-blue-700 hover:text-white p-3 rounded-full transition-all duration-300 hover:rotate-45 hover:scale-110 transform shadow-lg hover:shadow-xl order-3"
-              aria-label="Scroll to top"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-              <ArrowUpRight size={20} />
-            </button> */}
           </div>
         </div>
       </div>

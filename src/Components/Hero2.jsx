@@ -8,7 +8,7 @@ const AlbatrossLogo = ({ className }) => (
   </svg>
 )
 
-const Hero = () => {
+const Hero2 = () => {
   return (
     <section className="py-6 sm:py-8 md:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,9 +17,9 @@ const Hero = () => {
           {/* Image Section */}
           <div className="w-full lg:w-1/2 flex justify-center order-first lg:order-last">
             <img
-              src="/images/hero.webp"
+              src="/images/hero2.webp"
               alt="Albatross Expert Consultation"
-              className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-full h-auto object-contain rounded-lg"
+              className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-full h-auto object-cover"
               loading="lazy"
             />
           </div>
@@ -31,29 +31,28 @@ const Hero = () => {
             <div className="lg:hidden">
 
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-4 md:gap-6 mb-5 sm:mb-6 md:mb-8">
-                <div className="flex-shrink-0">
+                {/* <div className="flex-shrink-0">
                   <AlbatrossLogo className="w-9 h-10 sm:w-10 sm:h-12 md:w-11 md:h-14" />
-                </div>
+                </div> */}
 
                 <div className="flex-1">
                   <h1 className="text-2xl sm:text-3xl md:text-4xl font-normal leading-tight text-center sm:text-left">
-                    <span className="block mb-1 sm:mb-2 md:mb-3">Bringing Nepal to</span>
+                    <span className="block mb-1 sm:mb-2 md:mb-3 font-bold">Study in Russia</span>
                     <span className="relative inline-block mb-3 sm:mb-4 font-bold">
-                      Global Academic
+                    Students:
                       <img
                         src="/images/underline.png"
                         alt=""
                         className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-2 sm:h-3"
-                      />
+                      />   
                     </span>
-                    <span className="block">Excellence</span>
+                    <span className='inline-block mb-3 sm:mb-4'>Unlock Global</span>
+                    <span className="block">Opportunities</span>
                   </h1>
                 </div>
               </div>
 
-              <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-5 sm:mb-6 md:mb-8 max-w-2xl text-center sm:text-left px-2 sm:px-0">
-                Structured pathways to leading Russian universities guided by transparency, integrity, and institutional credibility.
-              </p>
+           
 
               <div className="flex flex-col sm:flex-row gap-3 w-full max-w-xs sm:max-w-none sm:justify-start mx-auto sm:mx-0">
                 <button className="w-full sm:w-auto bg-[#1d438d] text-white py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg text-sm sm:text-base font-medium hover:bg-[#163675] transition duration-300 border border-[#1d438d]">
@@ -68,28 +67,28 @@ const Hero = () => {
             {/* ── Desktop Layout (hidden below lg) ── */}
             <div className="hidden lg:flex flex-col items-start text-left">
 
-              <div className="mb-2">
+              {/* <div className="mb-2">
                 <AlbatrossLogo className="w-10 h-12 lg:w-10 lg:h-12 xl:w-12 xl:h-14" />
-              </div>
+              </div> */}
 
               <div className="mb-4 lg:mb-6">
                 <h1 className="text-4xl lg:text-4xl xl:text-5xl font-normal leading-tight">
-                  <span className="block mb-2 xl:mb-3">Bringing Nepal to</span>
+                  <span className="block mb-2 xl:mb-3 font-bold">Study in Russia</span>
                   <span className="relative inline-block mb-4 xl:mb-5 font-bold">
-                    Global Academic
+                     Students:
                     <img
                       src="/images/underline.png"
                       alt=""
                       className="absolute -bottom-2 xl:-bottom-3 left-0 w-full h-3 xl:h-4"
                     />
+                   
                   </span>
-                  <span className="block">Excellence</span>
+                      <span className='inline-block mb-3 sm:mb-4'>Unlock Global</span>
+                  <span className="block">Opportunities</span>
                 </h1>
               </div>
 
-              <p className="text-lg lg:text-xl text-gray-600 mb-6 lg:mb-6 xl:mb-8 max-w-2xl">
-                Structured pathways to leading Russian universities guided by transparency, integrity, and institutional credibility.
-              </p>
+           
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-sm sm:max-w-none">
                 <button className="w-full sm:w-auto bg-[#1d438d] text-white py-3 px-4 sm:px-6 rounded-lg text-base lg:text-lg font-medium hover:bg-[#163675] transition duration-300 border border-[#1d438d]">
@@ -108,4 +107,4 @@ const Hero = () => {
   )
 }
 
-export default Hero
+export default Hero2
