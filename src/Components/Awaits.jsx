@@ -28,7 +28,7 @@ const Awaits = () => {
   ];
 
   return (
-    <div className="sm:py-24 py-12">
+    
       <div ref={sectionRef} className="relative bg-[#1d428c] rounded-[2rem] sm:rounded-[3rem] overflow-hidden px-6 sm:px-12 md:px-24">
 
         {/* ── DESKTOP LAYOUT: unchanged ── */}
@@ -45,7 +45,7 @@ const Awaits = () => {
               }}
             >
               {imgLeft.map((src, i) => (
-                <img key={i} src={src} alt="Russia" className="w-full h-44 object-cover rounded-lg" />
+                <img key={i} src={src} alt="Russia" className="w-full h-44 object-cover rounded-lg sm:rounded-xl" />
               ))}
             </div>
           </div>
@@ -81,7 +81,7 @@ const Awaits = () => {
               </p>
 
               <div className="pt-1 pb-6">
-                <button className="inline-flex items-center justify-center bg-white text-[#1d428c] font-semibold text-base px-10 py-3 rounded-full hover:shadow-xl hover:scale-[1.03] transition-all duration-200 active:scale-95">
+                <button className="inline-flex items-center justify-center bg-white text-[#1d428c] font-semibold text-base px-10 py-3 rounded-lg sm:rounded-xl hover:shadow-xl hover:scale-[1.03] transition-all duration-200 active:scale-95">
                   Apply Now
                 </button>
               </div>
@@ -99,7 +99,7 @@ const Awaits = () => {
               }}
             >
               {imgRight.map((src, i) => (
-                <img key={i} src={src} alt="Russia" className="w-full h-44 object-cover rounded-lg" />
+                <img key={i} src={src} alt="Russia" className="w-full h-44 object-cover rounded-lg sm:rounded-xl" />
               ))}
             </div>
           </div>
@@ -153,7 +153,7 @@ const Awaits = () => {
             </p>
 
             <div className="pt-2">
-              <button className="inline-flex items-center justify-center bg-white text-[#1d428c] font-semibold text-sm px-9 py-2.5 rounded-full hover:shadow-lg hover:scale-[1.02] transition-all duration-200 active:scale-95">
+              <button className="inline-flex items-center justify-center bg-white text-[#1d428c] font-semibold text-sm px-9 py-2.5 rounded-lg sm:rounded-xl hover:shadow-lg hover:scale-[1.02] transition-all duration-200 active:scale-95">
                 Apply Now
               </button>
             </div>
@@ -162,7 +162,7 @@ const Awaits = () => {
         </div>
 
       </div>
-    </div>
+
   );
 };
 

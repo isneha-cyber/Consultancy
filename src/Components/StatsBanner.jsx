@@ -25,9 +25,9 @@ export default function StatsBanner() {
   ];
 
   return (
-    <div className="py-12 flex items-center justify-center px-4">
-      <div className="w-full max-w-7xl">
-        <div className="bg-[#e8edf4] rounded-3xl p-4 sm:p-6">
+    <div className="py-12 flex items-center justify-center px-24">
+      <div className="w-full ">
+        <div className="bg-[#e8edf4] rounded-[2rem] sm:rounded-[3rem] p-4 sm:p-6">
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
             {stats.map((stat, index) => (
               <div 

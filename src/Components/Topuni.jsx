@@ -48,7 +48,7 @@ const Topuni = () => {
           {universities.map((uni) => (
             <div
               key={uni.id}
-              className="bg-white rounded-md border border-gray-100 p-2 sm:p-3 md:p-4 hover:shadow-sm transition-shadow duration-200"
+              className="bg-white rounded-lg sm:rounded-xl border border-gray-100 p-2 sm:p-3 md:p-4 hover:shadow-sm transition-shadow duration-200"
             >
               {/* Logo Container */}
               <div className="h-14 sm:h-16 md:h-20 mb-1 sm:mb-2 flex items-center justify-center">
@@ -69,7 +69,7 @@ const Topuni = () => {
         </div>
         
         {/* View More Button */}
-        <button className='text-sm sm:text-base md:text-lg hover:text-white hover:bg-[#1d428c] transition-all duration-200 mt-8 sm:mt-10 md:mt-12 px-4 sm:px-5 py-2 sm:py-2.5 rounded-md border border-[#1d428c] text-[#1d428c] font-medium'>
+        <button className='text-sm sm:text-base md:text-lg hover:text-white hover:bg-[#1d428c] transition-all duration-200 mt-8 sm:mt-10 md:mt-12 px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg sm:rounded-xl border border-[#1d428c] text-[#1d428c] font-medium'>
           <a href="https://www.topuniversities.com/world-university-rankings?countries=ru">View More</a>
         </button>
       </div>

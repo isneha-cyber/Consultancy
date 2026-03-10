@@ -19,7 +19,7 @@ const ServiceHero = () => {
             <img
               src="/images/service.png"
               alt="Albatross Expert Consultation"
-              className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-full h-auto object-contain rounded-lg"
+              className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-full h-auto object-contain rounded-xl"
               loading="lazy"
             />
           </div>
@@ -55,10 +55,10 @@ const ServiceHero = () => {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
-              <button className="w-full sm:w-auto bg-[#1d438d] text-white py-2.5 sm:py-3 px-6 rounded-lg text-sm sm:text-base lg:text-lg font-medium hover:bg-[#163675] transition duration-300 border border-[#1d438d]">
+              <button className="w-full sm:w-auto bg-[#1d438d] text-white py-2.5 sm:py-3 px-6 rounded-xl text-sm sm:text-base lg:text-lg font-medium hover:bg-[#163675] transition duration-300 border border-[#1d438d]">
                 Book Consultation
               </button>
-              <button className="w-full sm:w-auto border border-[#1d438d] text-[#1d438d] py-2.5 sm:py-3 px-6 rounded-lg text-sm sm:text-base lg:text-lg font-medium hover:bg-[#1d438d] hover:text-white transition duration-300 flex items-center justify-center gap-2">
+              <button className="w-full sm:w-auto border border-[#1d438d] text-[#1d438d] py-2.5 sm:py-3 px-6 rounded-xl text-sm sm:text-base lg:text-lg font-medium hover:bg-[#1d438d] hover:text-white transition duration-300 flex items-center justify-center gap-2">
                 Register
               </button>
             </div>

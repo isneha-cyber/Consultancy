@@ -55,10 +55,10 @@ const Hero2 = () => {
            
 
               <div className="flex flex-col sm:flex-row gap-3 w-full max-w-xs sm:max-w-none sm:justify-start mx-auto sm:mx-0">
-                <button className="w-full sm:w-auto bg-[#1d438d] text-white py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg text-sm sm:text-base font-medium hover:bg-[#163675] transition duration-300 border border-[#1d438d]">
+                <button className="w-full sm:w-auto bg-[#1d438d] text-white py-2.5 sm:py-3 px-4 sm:px-6 rounded-xl text-sm sm:text-base font-medium hover:bg-[#163675] transition duration-300 border border-[#1d438d]">
                   Book Consultation
                 </button>
-                <button className="w-full sm:w-auto border border-[#1d438d] text-[#1d438d] py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg text-sm sm:text-base font-medium hover:bg-[#1d438d] hover:text-white transition duration-300 flex items-center justify-center gap-2">
+                <button className="w-full sm:w-auto border border-[#1d438d] text-[#1d438d] py-2.5 sm:py-3 px-4 sm:px-6 rounded-xl text-sm sm:text-base font-medium hover:bg-[#1d438d] hover:text-white transition duration-300 flex items-center justify-center gap-2">
                   Register
                 </button>
               </div>

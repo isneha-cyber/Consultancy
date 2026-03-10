@@ -94,12 +94,12 @@ const Courses = () => {
           >
             {courses.map((course) => (
               <SwiperSlide key={course.id}>
-                <div className="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:shadow-lg h-full mx-2">
+                <div className="bg-white rounded-3xl overflow-hidden border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:shadow-lg h-full mx-2">
                   <div className="relative h-48 sm:h-52 overflow-hidden">
                     <img
                       src={course.image}
                       alt={course.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500 "
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
                   </div>

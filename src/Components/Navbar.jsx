@@ -189,7 +189,7 @@ const Navbar = () => {
               <img
                 src="/images/logo.png"
                 alt="Albatross Insights"
-                className="h-10 sm:h-11 md:h-[50px] w-auto"
+                className="h-10 sm:h-11 md:h-[55px] w-auto"
                 style={{ transition: 'transform 0.3s ease' }}
                 onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
                 onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
@@ -213,14 +213,14 @@ const Navbar = () => {
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center gap-2.5">
               <a href="tel:+977XXXXXXXXXX"
-                className="hidden lg:flex items-center gap-1.5 font-semibold border rounded-xl px-4 py-2 transition-colors duration-200 hover:bg-[#f0f5ff]"
+                className="hidden lg:flex items-center gap-1.5 font-semibold border rounded-lg sm:rounded-xl px-4 py-2.5 transition-colors duration-200 hover:bg-[#f0f5ff]"
                 style={{ color: '#1d438d', fontSize: 13, borderColor: '#d0def5' }}>
                 <PhoneIcon size={12} />
                 +977-XXXXXXXXXX
               </a>
               <a href="/contact">
                 <button
-                  className="cta-shimmer inline-flex items-center gap-1.5 font-semibold rounded-xl px-5 py-2.5 tracking-wide shadow-sm transition-colors duration-300"
+                  className="cta-shimmer inline-flex items-center gap-1.5 font-semibold rounded-lg sm:rounded-xl px-5 py-2.5 tracking-wide shadow-sm transition-colors duration-300"
                   style={{ background: '#1d438d', color: 'white', fontSize: 14, border: 'none', cursor: 'pointer' }}
                   onMouseEnter={e => e.currentTarget.style.background = '#163675'}
                   onMouseLeave={e => e.currentTarget.style.background = '#1d438d'}
@@ -234,7 +234,7 @@ const Navbar = () => {
             <div className="md:hidden flex items-center gap-1.5">
               <a
                 href="tel:+977XXXXXXXXXX"
-                className="flex items-center justify-center rounded-xl transition-all duration-200"
+                className="flex items-center justify-center rounded-lg sm:rounded-xltransition-all duration-200"
                 style={{ width: 36, height: 36, background: '#eaf0f8', color: '#1d438d' }}
                 onMouseEnter={e => { e.currentTarget.style.background='#1d438d'; e.currentTarget.style.color='white'; }}
                 onMouseLeave={e => { e.currentTarget.style.background='#eaf0f8'; e.currentTarget.style.color='#1d438d'; }}
@@ -245,7 +245,7 @@ const Navbar = () => {
                 onClick={() => setIsMobileOpen(v => !v)}
                 aria-label="Toggle menu"
                 aria-expanded={isMobileOpen}
-                className="flex flex-col justify-center items-center rounded-xl hover:bg-[#f0f5ff] transition-colors duration-200"
+                className="flex flex-col justify-center items-center rounded-lg sm:rounded-xl hover:bg-[#f0f5ff] transition-colors duration-200"
                 style={{ width: 40, height: 40, gap: 5, background: 'none', border: 'none', cursor: 'pointer' }}
               >
                 <span style={{
@@ -309,7 +309,7 @@ const Navbar = () => {
             <button
               onClick={() => setIsMobileOpen(false)}
               aria-label="Close menu"
-              className="flex items-center justify-center rounded-lg transition-all duration-200 hover:bg-[#1d438d] hover:text-white"
+              className="flex items-center justify-center rounded-lg sm:rounded-xl transition-all duration-200 hover:bg-[#1d438d] hover:text-white"
               style={{ width: 32, height: 32, background: '#f4f7fc', color: '#374151', border: 'none', cursor: 'pointer' }}
             >
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
@@ -325,7 +325,7 @@ const Navbar = () => {
                 key={href}
                 href={href}
                 onClick={() => setIsMobileOpen(false)}
-                className={`drawer-row flex items-center gap-3 px-4 py-3.5 rounded-xl font-semibold transition-all duration-200 ${isActive(href) ? 'bg-[#eaf0f8] text-[#1d438d] active' : 'text-[#374151] hover:bg-[#f8fafd] hover:text-[#1d438d]'}`}
+                className={`drawer-row flex items-center gap-3 px-4 py-3.5 rounded-lg sm:rounded-xlfont-semibold transition-all duration-200 ${isActive(href) ? 'bg-[#eaf0f8] text-[#1d438d] active' : 'text-[#374151] hover:bg-[#f8fafd] hover:text-[#1d438d]'}`}
                 style={{ fontSize: 15 }}
               >
                 <span
@@ -361,7 +361,7 @@ const Navbar = () => {
           <div className="px-4 py-4 border-t border-[#edf2f7] flex flex-col gap-2.5">
             <a href="/contact" onClick={() => setIsMobileOpen(false)}>
               <button
-                className="cta-shimmer w-full flex items-center justify-center gap-2 font-semibold rounded-xl shadow-sm transition-colors duration-300"
+                className="cta-shimmer w-full flex items-center justify-center gap-2 font-semibold rounded-2rem sm:rounded-3xl  shadow-sm transition-colors duration-300"
                 style={{ background: '#1d438d', color: 'white', fontSize: 14, padding: '12px', border: 'none', cursor: 'pointer' }}
                 onMouseEnter={e => e.currentTarget.style.background = '#163675'}
                 onMouseLeave={e => e.currentTarget.style.background = '#1d438d'}

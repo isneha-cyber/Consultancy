@@ -35,7 +35,7 @@ export default function Reach() {
   const labelCls = "block text-white/80 text-xs sm:text-sm mb-1.5 font-medium";
 
   return (
-    <div className="bg-[#1d428c] py-10 sm:py-16 lg:py-20 px-4 sm:px-8 lg:px-16 xl:px-24">
+    <div className="bg-[#1d428c] py-10 sm:py-16 lg:py-20 px-4 sm:px-8 lg:px-16 xl:px-24 rounded-[2rem] sm:rounded-[3rem]">
      
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 

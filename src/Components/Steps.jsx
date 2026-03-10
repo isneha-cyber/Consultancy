@@ -42,99 +42,102 @@ const Steps = () => {
 
   return (
     <div className="py-12 sm:py-24 bg-gray-50">
-    <div className="  px-4 sm:px-6 lg:px-0">
-      <div className="sm:px-24 max-w-7xl mx-auto">
+      <div className="px-4 sm:px-6 lg:px-0">
+        <div className="sm:px-24 max-w-7xl mx-auto">
 
-        {/* Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
-            <span className="relative inline-block px-2">
-              Steps
-              <img
-                src="/images/underline.png"
-                alt=""
-                className="absolute -bottom-3 sm:-bottom-4 left-0 w-full h-3 sm:h-4"
-              />
-            </span>
-            <span className="block sm:inline sm:ml-2 mt-2 sm:mt-0">
-              To Your Dream Destination
-            </span>
-          </h2>
-          <p className="mt-6 text-gray-500 text-base sm:text-lg max-w-2xl mx-auto">
-            A structured, end-to-end journey from first consultation to landing in Russia — guided by experts at every stage.
-          </p>
-        </div>
-
-        {/* Main Content */}
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
-
-          {/* Left Side - Stacked Sticky Cards */}
-          <div className="w-full lg:w-1/2 space-y-6 sm:space-y-8">
-            {steps.map((step) => (
-              <div
-                key={step.id}
-                className={`sticky ${step.stickyTop} transition-all duration-300`}
-              >
-                <div className="border-2 border-[#1d428c] rounded-2xl sm:rounded-3xl p-6 sm:p-8 bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300">
-
-                  {/* Step Badge + Title Row */}
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#1d428c] text-white text-lg sm:text-xl font-bold shadow-lg">
-                      {step.id}
-                    </div>
-                    <h3 className="text-lg sm:text-2xl md:text-3xl font-bold text-gray-900 leading-snug">
-                      {step.title}
-                    </h3>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-gray-600 text-sm sm:text-base md:text-lg mb-6 leading-relaxed">
-                    {step.description}
-                  </p>
-
-                  {/* CTA */}
-                  <button className="bg-[#1d428c] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-[#152f63] transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-                    Free Expert Consultation
-                  </button>
-                </div>
-              </div>
-            ))}
+          {/* Header */}
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
+              <span className="relative inline-block px-2">
+                Steps
+                <img
+                  src="/images/underline.png"
+                  alt=""
+                  className="absolute -bottom-3 sm:-bottom-4 left-0 w-full h-3 sm:h-4"
+                />
+              </span>
+              <span className="block sm:inline sm:ml-2 mt-2 sm:mt-0">
+                To Your Dream Destination
+              </span>
+            </h2>
+            <p className="mt-6 text-gray-500 text-base sm:text-lg max-w-2xl mx-auto">
+              A structured, end-to-end journey from first consultation to landing in Russia — guided by experts at every stage.
+            </p>
           </div>
 
-          {/* Right Side - Sticky Image (desktop only) */}
-          <div className="hidden lg:block w-full lg:w-1/2 lg:sticky lg:top-10">
-            <div className="relative">
+          {/* Main Content */}
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-48 items-start">
+
+            {/* Left Side - Stacked Sticky Cards */}
+            <div className="w-full lg:w-1/2 space-y-6 sm:space-y-8">
+              {steps.map((step) => (
+                <div
+                  key={step.id}
+                  className={`sticky ${step.stickyTop} transition-all duration-300`}
+                >
+                  <div
+                    className="rounded-2xl sm:rounded-3xl p-6 sm:p-8 duration-300"
+                    style={{ backgroundColor: '#e8edf4' }}
+                  >
+
+                    {/* Step Badge + Title Row */}
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#1d428c] text-white text-lg sm:text-xl font-bold shadow-lg">
+                        {step.id}
+                      </div>
+                      <h3 className="text-lg sm:text-2xl md:text-3xl font-bold text-gray-900 leading-snug">
+                        {step.title}
+                      </h3>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-gray-600 text-sm sm:text-base md:text-lg mb-6 leading-relaxed">
+                      {step.description}
+                    </p>
+
+                    {/* CTA */}
+                    <button className="bg-[#1d428c] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-[#152f63] transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+                      Free Expert Consultation
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Right Side - Sticky Image (desktop only) */}
+            <div className="hidden lg:block w-full lg:w-1/2 lg:sticky lg:top-10">
+              <div className="relative">
+                <img
+                  src="/images/steps.webp"
+                  alt="Student with travel documents"
+                  className="w-full h-[600px] rounded-3xl object-cover mx-auto "
+                />
+                {/* Floating badge */}
+                <div className="absolute bottom-6 left-6 bg-white rounded-2xl px-8 py-4 shadow-lg">
+                  <p className="text-[#1d428c] font-bold text-lg">99% Visa Success</p>
+                  <p className="text-gray-500 text-sm">Across all student applications</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Image */}
+          <div className="lg:hidden mt-10 sm:mt-12">
+            <div className="relative max-w-md mx-auto">
               <img
                 src="/images/steps.webp"
                 alt="Student with travel documents"
-                className="w-full h-[600px] rounded-3xl object-cover mx-auto shadow-xl"
+                className="w-full h-auto rounded-2xl sm:rounded-3xl object-cover shadow-xl"
               />
-              {/* Floating badge */}
-              <div className="absolute bottom-6 left-6 bg-white rounded-2xl px-5 py-4 shadow-lg">
-                <p className="text-[#1d428c] font-bold text-lg">99% Visa Success</p>
-                <p className="text-gray-500 text-sm">Across all student applications</p>
+              <div className="absolute bottom-4 left-4 bg-white rounded-xl px-4 py-3 shadow-lg">
+                <p className="text-[#1d428c] font-bold text-base">99% Visa Success</p>
+                <p className="text-gray-500 text-xs">Across all student applications</p>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Mobile Image */}
-        <div className="lg:hidden mt-10 sm:mt-12">
-          <div className="relative max-w-md mx-auto">
-            <img
-              src="/images/steps.webp"
-              alt="Student with travel documents"
-              className="w-full h-auto rounded-2xl sm:rounded-3xl object-cover shadow-xl"
-            />
-            <div className="absolute bottom-4 left-4 bg-white rounded-xl px-4 py-3 shadow-lg">
-              <p className="text-[#1d428c] font-bold text-base">99% Visa Success</p>
-              <p className="text-gray-500 text-xs">Across all student applications</p>
-            </div>
-          </div>
         </div>
-
       </div>
-    </div>
     </div>
   );
 };

@@ -114,7 +114,7 @@ export default function BottomBanner() {
           {/* ── blue card — clips its own content but NOT the absolute image ── */}
           <div
             ref={ref}
-            className="relative bg-[#1d438d] rounded-2xl overflow-hidden"
+            className="relative bg-[#1d438d] rounded-3xl overflow-hidden"
             style={{ minHeight: "clamp(300px, 33vw, 420px)" }}
           >
             {/* ── LEFT CONTENT ── */}
